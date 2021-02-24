@@ -1,3 +1,66 @@
 models:
   Empresa:
     nombre: string
+  Industria:
+    nombre: string
+  Fiscal:
+    industria_id: id
+  Impuesto:
+    relationships:
+      belongsToMany: Fiscal
+  Contacto:
+    direccion_id: id
+    modeltable_type: string
+    modeltable_id: unsignedBigInteger
+  Direccion:
+    descripcion: string
+    municipio_id: id
+  Archivo:
+    modeltable_type: string
+    modeltable_id: unsignedBigInteger
+  Billetera:
+    modeltable_type: string
+    modeltable_id: unsignedBigInteger
+  Punto:
+    empresa_id: id
+  Inventario:
+    punto_id: id
+  Factura:
+    punto_id: id
+  Bien:
+    nombre: string
+    categoria_id: id
+  ListaPrecio:
+    carateristica_id: id
+  Caracteristica:
+    bien_id: id
+    color_id: id
+    material_id: id
+  Categoria:
+    nombre: string
+  Color:
+    nombre: string
+  Material:
+    nombre: string
+  Producto:
+    nombre: string
+    descripcion: text
+  Extra:
+    factura_id: id
+  BilleteraTipo:
+    banco_id: id
+  BilleteraMovimiento:
+    valor: integer
+  Banco:
+    nombre: string
+  DatosUsuario:
+    user_id: id
+  Cliente:
+    empresa_id: id
+  Score:
+    cliente_id: id
+  Municipio:
+    nombre: string
+    departamento_id: id
+  Departamento:
+    nombre: string
