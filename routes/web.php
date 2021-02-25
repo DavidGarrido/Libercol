@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmpresaController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,6 +25,18 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+/* Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->name('dashboard');
+})->name('dashboard'); */
+
+
+Route::group(['middleware' => ['auth:sanctum','verified']], function() {
+    
+    Route::get('/dashboard', function() {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+
+    Route::resource('{rol}/empresa', EmpresaController::class)->names('empresa');
+});
+
+

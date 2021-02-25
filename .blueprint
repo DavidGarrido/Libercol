@@ -1,0 +1,112 @@
+created:
+    - database/factories/EmpresaFactory.php
+    - database/factories/IndustriaFactory.php
+    - database/factories/FiscalFactory.php
+    - database/factories/ImpuestoFactory.php
+    - database/factories/ContactoFactory.php
+    - database/factories/DireccionFactory.php
+    - database/factories/ArchivoFactory.php
+    - database/factories/BilleteraFactory.php
+    - database/factories/PuntoFactory.php
+    - database/factories/InventarioFactory.php
+    - database/factories/FacturaFactory.php
+    - database/factories/BienFactory.php
+    - database/factories/ListaPrecioFactory.php
+    - database/factories/CaracteristicaFactory.php
+    - database/factories/CategoriaFactory.php
+    - database/factories/ColorFactory.php
+    - database/factories/MaterialFactory.php
+    - database/factories/ProductoFactory.php
+    - database/factories/ExtraFactory.php
+    - database/factories/BilleteraTipoFactory.php
+    - database/factories/BilleteraMovimientoFactory.php
+    - database/factories/BancoFactory.php
+    - database/factories/DatosUsuarioFactory.php
+    - database/factories/ClienteFactory.php
+    - database/factories/ScoreFactory.php
+    - database/factories/MunicipioFactory.php
+    - database/factories/DepartamentoFactory.php
+    - database/migrations/2021_02_24_221244_create_empresas_table.php
+    - database/migrations/2021_02_24_221245_create_industrias_table.php
+    - database/migrations/2021_02_24_221246_create_fiscals_table.php
+    - database/migrations/2021_02_24_221247_create_impuestos_table.php
+    - database/migrations/2021_02_24_221248_create_contactos_table.php
+    - database/migrations/2021_02_24_221249_create_direccions_table.php
+    - database/migrations/2021_02_24_221250_create_archivos_table.php
+    - database/migrations/2021_02_24_221251_create_billeteras_table.php
+    - database/migrations/2021_02_24_221252_create_puntos_table.php
+    - database/migrations/2021_02_24_221253_create_inventarios_table.php
+    - database/migrations/2021_02_24_221254_create_facturas_table.php
+    - database/migrations/2021_02_24_221255_create_biens_table.php
+    - database/migrations/2021_02_24_221256_create_lista_precios_table.php
+    - database/migrations/2021_02_24_221257_create_caracteristicas_table.php
+    - database/migrations/2021_02_24_221258_create_categorias_table.php
+    - database/migrations/2021_02_24_221259_create_colors_table.php
+    - database/migrations/2021_02_24_221300_create_materials_table.php
+    - database/migrations/2021_02_24_221301_create_productos_table.php
+    - database/migrations/2021_02_24_221302_create_extras_table.php
+    - database/migrations/2021_02_24_221303_create_billetera_tipos_table.php
+    - database/migrations/2021_02_24_221304_create_billetera_movimientos_table.php
+    - database/migrations/2021_02_24_221305_create_bancos_table.php
+    - database/migrations/2021_02_24_221306_create_datos_usuarios_table.php
+    - database/migrations/2021_02_24_221307_create_clientes_table.php
+    - database/migrations/2021_02_24_221308_create_scores_table.php
+    - database/migrations/2021_02_24_221309_create_municipios_table.php
+    - database/migrations/2021_02_24_221310_create_departamentos_table.php
+    - database/migrations/2021_02_24_221311_create_fiscal_impuesto_table.php
+    - database/migrations/2021_02_24_221312_create_bien_categoria_table.php
+    - app/Models/Empresa.php
+    - app/Models/Industria.php
+    - app/Models/Fiscal.php
+    - app/Models/Impuesto.php
+    - app/Models/Contacto.php
+    - app/Models/Direccion.php
+    - app/Models/Archivo.php
+    - app/Models/Billetera.php
+    - app/Models/Punto.php
+    - app/Models/Inventario.php
+    - app/Models/Factura.php
+    - app/Models/Bien.php
+    - app/Models/ListaPrecio.php
+    - app/Models/Caracteristica.php
+    - app/Models/Categoria.php
+    - app/Models/Color.php
+    - app/Models/Material.php
+    - app/Models/Producto.php
+    - app/Models/Extra.php
+    - app/Models/BilleteraTipo.php
+    - app/Models/BilleteraMovimiento.php
+    - app/Models/Banco.php
+    - app/Models/DatosUsuario.php
+    - app/Models/Cliente.php
+    - app/Models/Score.php
+    - app/Models/Municipio.php
+    - app/Models/Departamento.php
+models:
+    Empresa: { nombre: string }
+    Industria: { nombre: string }
+    Fiscal: { industria_id: id }
+    Impuesto: { relationships: { belongsToMany: Fiscal } }
+    Contacto: { direccion_id: id, modeltable_type: string, modeltable_id: unsignedBigInteger }
+    Direccion: { descripcion: string, municipio_id: id }
+    Archivo: { modeltable_type: string, modeltable_id: unsignedBigInteger }
+    Billetera: { modeltable_type: string, modeltable_id: unsignedBigInteger }
+    Punto: { empresa_id: id, tipo: 'enum:oficina,bodega,almacen,principal', comentario: nullable, relationships: { hasMany: Inventario } }
+    Inventario: { punto_id: id, bien_id: id }
+    Factura: { punto_id: id }
+    Bien: { nombre: string, descripcion: text, user_id: id, valoracion: bigInteger, relationships: { hasMany: Inventario, belongsToMany: Categoria } }
+    ListaPrecio: { carateristica_id: id }
+    Caracteristica: { referencia: 'string nullable', peso_kl: 'decimal:10,1 nullable', talla: 'string:2 nullable', ancho: 'integer nullable', alto: 'integer nullable', textura: 'string nullable', cantidad: 'default:1', bien_id: id, color_id: id, material_id: id }
+    Categoria: { nombre: string }
+    Color: { nombre: string }
+    Material: { nombre: string }
+    Producto: { nombre: string, descripcion: text }
+    Extra: { factura_id: id }
+    BilleteraTipo: { banco_id: id }
+    BilleteraMovimiento: { valor: integer }
+    Banco: { nombre: string }
+    DatosUsuario: { user_id: id }
+    Cliente: { empresa_id: id }
+    Score: { cliente_id: id }
+    Municipio: { nombre: string, departamento_id: id }
+    Departamento: { nombre: string }

@@ -1,66 +1,163 @@
 models:
   Empresa:
     nombre: string
+    color: string
+    relationships:
+      hasMany: Fiscal, Punto, Cliente
   Industria:
     nombre: string
+    relationships:
+      hasMany: Fiscal
   Fiscal:
     industria_id: id
+    empresa_id: id
   Impuesto:
     relationships:
       belongsToMany: Fiscal
   Contacto:
-    direccion_id: id
+    fijo: bigInteger nullable
+    cel_one: bigInteger nullable
+    cel_two: bigInteger nullable
+    whatsapp: bigInteger nullable
+    telegram: bigInteger nullable
+    facebook: string nullable
+    instagram: string nullable
+    twitter: string nullable
+    linkedin: string nullable
+    email: string nullable
+    web: string nullable
+    direccion_id: id nullable
     modeltable_type: string
     modeltable_id: unsignedBigInteger
   Direccion:
     descripcion: string
     municipio_id: id
+    relationships:
+      hasMany: Contacto
   Archivo:
-    modeltable_type: string
-    modeltable_id: unsignedBigInteger
-  Billetera:
+    formato: enum:image,doc,pdf,url
+    tipo: enum:transaccion,perfil,producto,rut,cedula,camara,ref_comercial,ref_personal,ref_bancaria,cer_libertad,balance,tarjeta_profesional,extecto,nit
+    ruta: string
+    comentario: text nullable
     modeltable_type: string
     modeltable_id: unsignedBigInteger
   Punto:
     empresa_id: id
+    tipo: enum:oficina,bodega,almacen,principal
+    comentario: nullable
+    relationships:
+      hasMany: Inventario, Factura
   Inventario:
     punto_id: id
+    bien_id: id
   Factura:
+    total: bigInteger
+    utc: bigInteger
     punto_id: id
+    creador_id: id foreign:users
+    vendedor_id: id foreign:users
+    relationships:
+      hasMany: Extra
   Bien:
     nombre: string
-    categoria_id: id
+    descripcion: text
+    creador_id: id foreign:users
+    valoracion: bigInteger
+    relationships:
+      hasMany: Inventario, Caracteristica
+      belongsToMany: Categoria
   ListaPrecio:
     carateristica_id: id
+    valor: bigInteger
+    estado: enum:activo,inactivo
+    utc_inicio: bigInteger nullable
+    utc_fin: bigInteger nullable
+    relationships:
+      hasMany: Producto
   Caracteristica:
+    referencia: string nullable
+    peso_kl: decimal:10,1 nullable
+    talla: string:2 nullable
+    ancho: integer nullable
+    alto: integer nullable
+    textura: string nullable
+    cantidad: default:1
+    max: integer nullable
+    min: integer default:1
     bien_id: id
     color_id: id
     material_id: id
+    relationships:
+      hasMany: ListaPrecio
   Categoria:
     nombre: string
+    slug: string
   Color:
     nombre: string
+    codigo: string
+    relationships:
+      hasMany: Caracteristica
   Material:
     nombre: string
+    slug: string
+    relationships:
+      hasMany: Caracteristica
   Producto:
     nombre: string
-    descripcion: text
+    caracteristicas: text
+    unidades: integer
+    lista_precio_id: id
   Extra:
+    concepto: string
+    valor: integer nullable
+    porcentarje: integer nullable
+    tipo: enum:inc,dec
     factura_id: id
+  Billetera:
+    modeltable_type: string
+    modeltable_id: unsignedBigInteger
+    billeteratipo_id: id
+    relationships:
+      hasMany: BilleteraMovimiento
   BilleteraTipo:
-    banco_id: id
+    tipo: enum:efectivo,ahorros,daviplata,nequi,movi,ticket,credito
+    banco_id: id nullable
+    limite: bigInteger nullable
+    relationships:
+      hasMany: Billetera
   BilleteraMovimiento:
-    valor: integer
+    valor: bigInteger
+    interes: bigInteger
+    utc_start: bigInteger nullable
+    utc_end: bigInteger nullable
+    tipo: enum:inc,dec
+    estado: enum:aprovado,desaprovado
+    billetera_id: id
   Banco:
     nombre: string
   DatosUsuario:
-    user_id: id
+    estatura_cm: integer nullable
+    peso_kl: integer nullable
+    talla: string:2
+    genero: enum:masculino,femenino
+    tipo_documento: enum:cc,ce,ti,rc,pp nullable
+    numero_docuemto: bigInteger nullable
+    modeltable_type: string nullable
+    modeltable_id: unsignedBigInteger nullable 
   Cliente:
+    nombre: string
     empresa_id: id
+    relationships:
+      hasMany: Score
   Score:
     cliente_id: id
   Municipio:
     nombre: string
     departamento_id: id
+    relationships:
+      hasMany: Direccion
   Departamento:
     nombre: string
+controllers:
+  Empresa:
+    resource
