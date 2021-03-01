@@ -1,21 +1,24 @@
 models:
-  Empresa:
-    nombre: string
+  Company:
+    name: string
     color: string
     relationships:
-      hasMany: Fiscal, Punto, Cliente
-  Industria:
-    nombre: string
+      hasMany: Fiscal, Point, Client
+  Industry:
+    name: string
     relationships:
       hasMany: Fiscal
   Fiscal:
-    industria_id: id
-    empresa_id: id
-  Impuesto:
+    industry_id: id
+    company_id: id
+  Tax:
+    name: string
+    percent: integer nullable
+    value: bigInteger nullable
     relationships:
       belongsToMany: Fiscal
-  Contacto:
-    fijo: bigInteger nullable
+  Contact:
+    tel: bigInteger nullable
     cel_one: bigInteger nullable
     cel_two: bigInteger nullable
     whatsapp: bigInteger nullable
@@ -26,138 +29,182 @@ models:
     linkedin: string nullable
     email: string nullable
     web: string nullable
-    direccion_id: id nullable
+    address_id: id nullable
     modeltable_type: string
     modeltable_id: unsignedBigInteger
-  Direccion:
-    descripcion: string
-    municipio_id: id
+  Address:
+    description_id: string
+    municipality_id: id
     relationships:
-      hasMany: Contacto
-  Archivo:
-    formato: enum:image,doc,pdf,url
-    tipo: enum:transaccion,perfil,producto,rut,cedula,camara,ref_comercial,ref_personal,ref_bancaria,cer_libertad,balance,tarjeta_profesional,extecto,nit
-    ruta: string
-    comentario: text nullable
+      hasMany: Contact
+  File:
+    format: enum:image,doc,pdf,url
+    type: enum:transaccion,perfil,producto,rut,cedula,camara,ref_comercial,ref_personal,ref_bancaria,cer_libertad,balance,tarjeta_profesional,extecto,nit
+    route: string
+    comment: text nullable
     modeltable_type: string
     modeltable_id: unsignedBigInteger
-  Punto:
-    empresa_id: id
-    tipo: enum:oficina,bodega,almacen,principal
-    comentario: nullable
+  Point:
+    company_id: id
+    type: enum:oficina,bodega,almacen,principal
+    comment: nullable
     relationships:
-      hasMany: Inventario, Factura
-  Inventario:
-    punto_id: id
-    bien_id: id
-  Factura:
+      hasMany: Inventary, Ticket
+  Inventary:
+    point_id: id
+    asset_id: id
+  Ticket:
+# Vendor_id y Creator_id hacen relacion a la tabla usuarios y tomaremos informacion ....
     total: bigInteger
     utc: bigInteger
-    punto_id: id
-    creador_id: id foreign:users
-    vendedor_id: id foreign:users
+    point_id: id
+    creator_id: id foreign:users
+    vendor_id: id foreign:users
     relationships:
       hasMany: Extra
-  Bien:
-    nombre: string
-    descripcion: text
-    creador_id: id foreign:users
-    valoracion: bigInteger
+  Asset:
+    name: string
+    description: text
+    creator_id: id foreign:users
+    valoration: bigInteger
     relationships:
-      hasMany: Inventario, Caracteristica
-      belongsToMany: Categoria
-  ListaPrecio:
-    carateristica_id: id
-    valor: bigInteger
-    estado: enum:activo,inactivo
-    utc_inicio: bigInteger nullable
-    utc_fin: bigInteger nullable
+      hasMany: Inventary, Feature
+      belongsToMany: Category
+  Listsale:
+    feature_id: id
+    value: bigInteger
+    state: enum:activo,inactivo
+    utc_start: bigInteger nullable
+    utc_end: bigInteger nullable
     relationships:
-      hasMany: Producto
-  Caracteristica:
-    referencia: string nullable
-    peso_kl: decimal:10,1 nullable
-    talla: string:2 nullable
-    ancho: integer nullable
-    alto: integer nullable
-    textura: string nullable
-    cantidad: default:1
+      hasMany: Product
+  Feature:
+    reference: string nullable
+    weight: decimal:10,1 nullable
+    size: string nullable
+    width: integer nullable
+    height: integer nullable
+    texture: string nullable
+    units: default:1
     max: integer nullable
     min: integer default:1
-    bien_id: id
+    asset_id: id
     color_id: id
     material_id: id
     relationships:
-      hasMany: ListaPrecio
-  Categoria:
-    nombre: string
-    slug: string
+      hasMany: Listsale
   Color:
-    nombre: string
-    codigo: string
+# Name: Para diferenciar los distintos colores
+# Type: Para saber el formato que tendra
+# Code: El valor del codigo
+# Feature:
+    name: string nullable
+    type: enum:rgba,rgb,hex
+    code: string nullable
     relationships:
-      hasMany: Caracteristica
+      hasMany: Feature
   Material:
-    nombre: string
+# Slug: es para poder tener URL´s amigalbes y luego poder filtrar 
+    name: string
     slug: string
     relationships:
-      hasMany: Caracteristica
-  Producto:
-    nombre: string
-    caracteristicas: text
-    unidades: integer
-    lista_precio_id: id
+      hasMany: Feature
+  Product:
+# Name: tener el nombre del Asset en el momento de la venta
+# Feacture: tomamos las caractiristicas del Asset y las imprimimos en la factura
+    name: string
+    feature: text
+    units: integer
+    listsale_id: id
   Extra:
-    concepto: string
-    valor: integer nullable
-    porcentarje: integer nullable
-    tipo: enum:inc,dec
-    factura_id: id
-  Billetera:
+    concept: string
+    value: integer nullable
+    percent: integer nullable
+    type: enum:inc,dec
+    ticket_id: id
+  Wallet:
     modeltable_type: string
     modeltable_id: unsignedBigInteger
-    billeteratipo_id: id
+    wallettype_id: id
     relationships:
-      hasMany: BilleteraMovimiento
-  BilleteraTipo:
-    tipo: enum:efectivo,ahorros,daviplata,nequi,movi,ticket,credito
-    banco_id: id nullable
-    limite: bigInteger nullable
+      hasMany: Walletmoviment
+  Wallettype:
+    type: enum:efectivo,ahorros,daviplata,nequi,movi,ticket,credito
+    bank_id: id nullable
+    limit: bigInteger nullable
     relationships:
-      hasMany: Billetera
-  BilleteraMovimiento:
-    valor: bigInteger
-    interes: bigInteger
+      hasMany: Wallet
+  Walletmoviment:
+    value: bigInteger
+    interest: bigInteger
     utc_start: bigInteger nullable
     utc_end: bigInteger nullable
-    tipo: enum:inc,dec
-    estado: enum:aprovado,desaprovado
-    billetera_id: id
-  Banco:
-    nombre: string
-  DatosUsuario:
-    estatura_cm: integer nullable
-    peso_kl: integer nullable
-    talla: string:2
-    genero: enum:masculino,femenino
-    tipo_documento: enum:cc,ce,ti,rc,pp nullable
-    numero_docuemto: bigInteger nullable
+    type: enum:inc,dec
+    state: enum:aprobado,desaprobado
+    wallet_id: id
+  Bank:
+    name: string
+  Userdata:
+    stature: integer nullable
+    weight: integer nullable
+    size: string
+    gender: enum:masculino,femenino
+    type_document: enum:cc,ce,ti,rc,pp nullable
+    number_document: bigInteger nullable
     modeltable_type: string nullable
     modeltable_id: unsignedBigInteger nullable 
-  Cliente:
-    nombre: string
-    empresa_id: id
+  Client:
+    name: string
+    company_id: id
     relationships:
       hasMany: Score
   Score:
-    cliente_id: id
-  Municipio:
-    nombre: string
-    departamento_id: id
+# Sales sera el total de compras que realizo el cliente.
+# Profit sera el total de dinero que ingreso a la empresa por ese cliente.
+# Stars sera la calidad del cliente.
+# Client_id es la relacion de Score y Cliente.
+    sales: unsignedInteger
+    profit: unsignedBigInteger
+    starts: unsignedInteger
+    client_id: id
+  Municipality:
+# Departament_id: Una municipalidad ???? departamentos
+# Address: Para relacionarlo con las direccioens
+    name: string
+    departament_id: id
     relationships:
-      hasMany: Direccion
-  Departamento:
-    nombre: string
+      hasMany: Address
+# Name: El nombre de los departamentos que existen
+  Departament:
+    name: string
+  Category:
+    name: string
+    slug: string
+    relationships:
+      belongsToMany: Asset
 controllers:
-  Empresa:
+  Company:
     resource
+  Point:
+    resource
+  Inventary:
+    resource
+  Ticket:
+    resource
+  Asset:
+    resource
+  Wallet:
+    resource
+  Color:
+    resource
+  Material:
+    resource
+  Client:
+    resource
+  Municipality:
+    resource
+  Departament:
+    resource
+  Category:
+    resource
+seeders: Company, Industry, Fiscal, Tax, Contact, Address, File, Point, Inventary, Ticket, Asset, Listsale, Feature, Color, Material, Product, Extra, Wallet, Wallettype, Walletmoviment, Bank, Userdata, Client, Score, Municipality, Departament, Category
