@@ -1,91 +1,216 @@
 created:
-    - database/factories/EmpresaFactory.php
-    - database/factories/IndustriaFactory.php
+    - app/Http/Controllers/CompanyController.php
+    - app/Http/Controllers/PointController.php
+    - app/Http/Controllers/InventaryController.php
+    - app/Http/Controllers/TicketController.php
+    - app/Http/Controllers/AssetController.php
+    - app/Http/Controllers/WalletController.php
+    - app/Http/Controllers/ColorController.php
+    - app/Http/Controllers/MaterialController.php
+    - app/Http/Controllers/ClientController.php
+    - app/Http/Controllers/MunicipalityController.php
+    - app/Http/Controllers/DepartamentController.php
+    - app/Http/Controllers/CategoryController.php
+    - database/factories/CompanyFactory.php
+    - database/factories/IndustryFactory.php
     - database/factories/FiscalFactory.php
-    - database/factories/ImpuestoFactory.php
-    - database/factories/ContactoFactory.php
-    - database/factories/DireccionFactory.php
-    - database/factories/ArchivoFactory.php
-    - database/factories/BilleteraFactory.php
-    - database/factories/PuntoFactory.php
-    - database/factories/InventarioFactory.php
-    - database/factories/FacturaFactory.php
-    - database/factories/BienFactory.php
-    - database/factories/ListaPrecioFactory.php
-    - database/factories/CaracteristicaFactory.php
-    - database/factories/CategoriaFactory.php
+    - database/factories/TaxFactory.php
+    - database/factories/ContactFactory.php
+    - database/factories/AddressFactory.php
+    - database/factories/FileFactory.php
+    - database/factories/PointFactory.php
+    - database/factories/InventaryFactory.php
+    - database/factories/TicketFactory.php
+    - database/factories/AssetFactory.php
+    - database/factories/ListsaleFactory.php
+    - database/factories/FeatureFactory.php
     - database/factories/ColorFactory.php
     - database/factories/MaterialFactory.php
-    - database/factories/ProductoFactory.php
+    - database/factories/ProductFactory.php
     - database/factories/ExtraFactory.php
-    - database/factories/BilleteraTipoFactory.php
-    - database/factories/BilleteraMovimientoFactory.php
-    - database/factories/BancoFactory.php
-    - database/factories/DatosUsuarioFactory.php
-    - database/factories/ClienteFactory.php
+    - database/factories/WalletFactory.php
+    - database/factories/WallettypeFactory.php
+    - database/factories/WalletmovimentFactory.php
+    - database/factories/BankFactory.php
+    - database/factories/UserdataFactory.php
+    - database/factories/ClientFactory.php
     - database/factories/ScoreFactory.php
-    - database/factories/MunicipioFactory.php
-    - database/factories/DepartamentoFactory.php
-    - database/migrations/2021_02_24_221244_create_empresas_table.php
-    - database/migrations/2021_02_24_221245_create_industrias_table.php
-    - database/migrations/2021_02_24_221246_create_fiscals_table.php
-    - database/migrations/2021_02_24_221247_create_impuestos_table.php
-    - database/migrations/2021_02_24_221248_create_contactos_table.php
-    - database/migrations/2021_02_24_221249_create_direccions_table.php
-    - database/migrations/2021_02_24_221250_create_archivos_table.php
-    - database/migrations/2021_02_24_221251_create_billeteras_table.php
-    - database/migrations/2021_02_24_221252_create_puntos_table.php
-    - database/migrations/2021_02_24_221253_create_inventarios_table.php
-    - database/migrations/2021_02_24_221254_create_facturas_table.php
-    - database/migrations/2021_02_24_221255_create_biens_table.php
-    - database/migrations/2021_02_24_221256_create_lista_precios_table.php
-    - database/migrations/2021_02_24_221257_create_caracteristicas_table.php
-    - database/migrations/2021_02_24_221258_create_categorias_table.php
-    - database/migrations/2021_02_24_221259_create_colors_table.php
-    - database/migrations/2021_02_24_221300_create_materials_table.php
-    - database/migrations/2021_02_24_221301_create_productos_table.php
-    - database/migrations/2021_02_24_221302_create_extras_table.php
-    - database/migrations/2021_02_24_221303_create_billetera_tipos_table.php
-    - database/migrations/2021_02_24_221304_create_billetera_movimientos_table.php
-    - database/migrations/2021_02_24_221305_create_bancos_table.php
-    - database/migrations/2021_02_24_221306_create_datos_usuarios_table.php
-    - database/migrations/2021_02_24_221307_create_clientes_table.php
-    - database/migrations/2021_02_24_221308_create_scores_table.php
-    - database/migrations/2021_02_24_221309_create_municipios_table.php
-    - database/migrations/2021_02_24_221310_create_departamentos_table.php
-    - database/migrations/2021_02_24_221311_create_fiscal_impuesto_table.php
-    - database/migrations/2021_02_24_221312_create_bien_categoria_table.php
-    - app/Models/Empresa.php
-    - app/Models/Industria.php
+    - database/factories/MunicipalityFactory.php
+    - database/factories/DepartamentFactory.php
+    - database/factories/CategoryFactory.php
+    - database/migrations/2021_03_01_222337_create_companies_table.php
+    - database/migrations/2021_03_01_222338_create_industries_table.php
+    - database/migrations/2021_03_01_222339_create_fiscals_table.php
+    - database/migrations/2021_03_01_222340_create_taxes_table.php
+    - database/migrations/2021_03_01_222341_create_contacts_table.php
+    - database/migrations/2021_03_01_222342_create_addresses_table.php
+    - database/migrations/2021_03_01_222343_create_files_table.php
+    - database/migrations/2021_03_01_222344_create_points_table.php
+    - database/migrations/2021_03_01_222345_create_inventaries_table.php
+    - database/migrations/2021_03_01_222346_create_tickets_table.php
+    - database/migrations/2021_03_01_222347_create_assets_table.php
+    - database/migrations/2021_03_01_222348_create_listsales_table.php
+    - database/migrations/2021_03_01_222349_create_features_table.php
+    - database/migrations/2021_03_01_222350_create_colors_table.php
+    - database/migrations/2021_03_01_222351_create_materials_table.php
+    - database/migrations/2021_03_01_222352_create_products_table.php
+    - database/migrations/2021_03_01_222353_create_extras_table.php
+    - database/migrations/2021_03_01_222354_create_wallets_table.php
+    - database/migrations/2021_03_01_222355_create_wallettypes_table.php
+    - database/migrations/2021_03_01_222356_create_walletmoviments_table.php
+    - database/migrations/2021_03_01_222357_create_banks_table.php
+    - database/migrations/2021_03_01_222358_create_userdatas_table.php
+    - database/migrations/2021_03_01_222359_create_clients_table.php
+    - database/migrations/2021_03_01_222400_create_scores_table.php
+    - database/migrations/2021_03_01_222401_create_municipalities_table.php
+    - database/migrations/2021_03_01_222402_create_departaments_table.php
+    - database/migrations/2021_03_01_222403_create_categories_table.php
+    - database/migrations/2021_03_01_222404_create_fiscal_tax_table.php
+    - database/migrations/2021_03_01_222405_create_asset_category_table.php
+    - app/Models/Company.php
+    - app/Models/Industry.php
     - app/Models/Fiscal.php
-    - app/Models/Impuesto.php
-    - app/Models/Contacto.php
-    - app/Models/Direccion.php
-    - app/Models/Archivo.php
-    - app/Models/Billetera.php
-    - app/Models/Punto.php
-    - app/Models/Inventario.php
-    - app/Models/Factura.php
-    - app/Models/Bien.php
-    - app/Models/ListaPrecio.php
-    - app/Models/Caracteristica.php
-    - app/Models/Categoria.php
+    - app/Models/Tax.php
+    - app/Models/Contact.php
+    - app/Models/Address.php
+    - app/Models/File.php
+    - app/Models/Point.php
+    - app/Models/Inventary.php
+    - app/Models/Ticket.php
+    - app/Models/Asset.php
+    - app/Models/Listsale.php
+    - app/Models/Feature.php
     - app/Models/Color.php
     - app/Models/Material.php
-    - app/Models/Producto.php
+    - app/Models/Product.php
     - app/Models/Extra.php
-    - app/Models/BilleteraTipo.php
-    - app/Models/BilleteraMovimiento.php
-    - app/Models/Banco.php
-    - app/Models/DatosUsuario.php
-    - app/Models/Cliente.php
+    - app/Models/Wallet.php
+    - app/Models/Wallettype.php
+    - app/Models/Walletmoviment.php
+    - app/Models/Bank.php
+    - app/Models/Userdata.php
+    - app/Models/Client.php
     - app/Models/Score.php
-    - app/Models/Municipio.php
-    - app/Models/Departamento.php
+    - app/Models/Municipality.php
+    - app/Models/Departament.php
+    - app/Models/Category.php
+    - database/seeders/CompanySeeder.php
+    - database/seeders/IndustrySeeder.php
+    - database/seeders/FiscalSeeder.php
+    - database/seeders/TaxSeeder.php
+    - database/seeders/ContactSeeder.php
+    - database/seeders/AddressSeeder.php
+    - database/seeders/FileSeeder.php
+    - database/seeders/PointSeeder.php
+    - database/seeders/InventarySeeder.php
+    - database/seeders/TicketSeeder.php
+    - database/seeders/AssetSeeder.php
+    - database/seeders/ListsaleSeeder.php
+    - database/seeders/FeatureSeeder.php
+    - database/seeders/ColorSeeder.php
+    - database/seeders/MaterialSeeder.php
+    - database/seeders/ProductSeeder.php
+    - database/seeders/ExtraSeeder.php
+    - database/seeders/WalletSeeder.php
+    - database/seeders/WallettypeSeeder.php
+    - database/seeders/WalletmovimentSeeder.php
+    - database/seeders/BankSeeder.php
+    - database/seeders/UserdataSeeder.php
+    - database/seeders/ClientSeeder.php
+    - database/seeders/ScoreSeeder.php
+    - database/seeders/MunicipalitySeeder.php
+    - database/seeders/DepartamentSeeder.php
+    - database/seeders/CategorySeeder.php
+    - tests/Feature/Http/Controllers/CompanyControllerTest.php
+    - tests/Feature/Http/Controllers/PointControllerTest.php
+    - tests/Feature/Http/Controllers/InventaryControllerTest.php
+    - tests/Feature/Http/Controllers/TicketControllerTest.php
+    - tests/Feature/Http/Controllers/AssetControllerTest.php
+    - tests/Feature/Http/Controllers/WalletControllerTest.php
+    - tests/Feature/Http/Controllers/ColorControllerTest.php
+    - tests/Feature/Http/Controllers/MaterialControllerTest.php
+    - tests/Feature/Http/Controllers/ClientControllerTest.php
+    - tests/Feature/Http/Controllers/MunicipalityControllerTest.php
+    - tests/Feature/Http/Controllers/DepartamentControllerTest.php
+    - tests/Feature/Http/Controllers/CategoryControllerTest.php
+    - app/Http/Requests/CompanyStoreRequest.php
+    - app/Http/Requests/CompanyUpdateRequest.php
+    - app/Http/Requests/PointStoreRequest.php
+    - app/Http/Requests/PointUpdateRequest.php
+    - app/Http/Requests/InventaryStoreRequest.php
+    - app/Http/Requests/InventaryUpdateRequest.php
+    - app/Http/Requests/TicketStoreRequest.php
+    - app/Http/Requests/TicketUpdateRequest.php
+    - app/Http/Requests/AssetStoreRequest.php
+    - app/Http/Requests/AssetUpdateRequest.php
+    - app/Http/Requests/WalletStoreRequest.php
+    - app/Http/Requests/WalletUpdateRequest.php
+    - app/Http/Requests/ColorStoreRequest.php
+    - app/Http/Requests/ColorUpdateRequest.php
+    - app/Http/Requests/MaterialStoreRequest.php
+    - app/Http/Requests/MaterialUpdateRequest.php
+    - app/Http/Requests/ClientStoreRequest.php
+    - app/Http/Requests/ClientUpdateRequest.php
+    - app/Http/Requests/MunicipalityStoreRequest.php
+    - app/Http/Requests/MunicipalityUpdateRequest.php
+    - app/Http/Requests/DepartamentStoreRequest.php
+    - app/Http/Requests/DepartamentUpdateRequest.php
+    - app/Http/Requests/CategoryStoreRequest.php
+    - app/Http/Requests/CategoryUpdateRequest.php
+    - resources/views/company/index.blade.php
+    - resources/views/company/create.blade.php
+    - resources/views/company/show.blade.php
+    - resources/views/company/edit.blade.php
+    - resources/views/point/index.blade.php
+    - resources/views/point/create.blade.php
+    - resources/views/point/show.blade.php
+    - resources/views/point/edit.blade.php
+    - resources/views/inventary/index.blade.php
+    - resources/views/inventary/create.blade.php
+    - resources/views/inventary/show.blade.php
+    - resources/views/inventary/edit.blade.php
+    - resources/views/ticket/index.blade.php
+    - resources/views/ticket/create.blade.php
+    - resources/views/ticket/show.blade.php
+    - resources/views/ticket/edit.blade.php
+    - resources/views/asset/index.blade.php
+    - resources/views/asset/create.blade.php
+    - resources/views/asset/show.blade.php
+    - resources/views/asset/edit.blade.php
+    - resources/views/wallet/index.blade.php
+    - resources/views/wallet/create.blade.php
+    - resources/views/wallet/show.blade.php
+    - resources/views/wallet/edit.blade.php
+    - resources/views/color/index.blade.php
+    - resources/views/color/create.blade.php
+    - resources/views/color/show.blade.php
+    - resources/views/color/edit.blade.php
+    - resources/views/material/index.blade.php
+    - resources/views/material/create.blade.php
+    - resources/views/material/show.blade.php
+    - resources/views/material/edit.blade.php
+    - resources/views/client/index.blade.php
+    - resources/views/client/create.blade.php
+    - resources/views/client/show.blade.php
+    - resources/views/client/edit.blade.php
+    - resources/views/municipality/index.blade.php
+    - resources/views/municipality/create.blade.php
+    - resources/views/municipality/show.blade.php
+    - resources/views/municipality/edit.blade.php
+    - resources/views/departament/index.blade.php
+    - resources/views/departament/create.blade.php
+    - resources/views/departament/show.blade.php
+    - resources/views/departament/edit.blade.php
+    - resources/views/category/index.blade.php
+    - resources/views/category/create.blade.php
+    - resources/views/category/show.blade.php
+    - resources/views/category/edit.blade.php
+updated:
+    - routes/web.php
 models:
     Empresa: { nombre: string }
     Industria: { nombre: string }
-    Fiscal: { industria_id: id }
+    Fiscal: { industry_id: id, company_id: id }
     Impuesto: { relationships: { belongsToMany: Fiscal } }
     Contacto: { direccion_id: id, modeltable_type: string, modeltable_id: unsignedBigInteger }
     Direccion: { descripcion: string, municipio_id: id }
@@ -98,15 +223,37 @@ models:
     ListaPrecio: { carateristica_id: id }
     Caracteristica: { referencia: 'string nullable', peso_kl: 'decimal:10,1 nullable', talla: 'string:2 nullable', ancho: 'integer nullable', alto: 'integer nullable', textura: 'string nullable', cantidad: 'default:1', bien_id: id, color_id: id, material_id: id }
     Categoria: { nombre: string }
-    Color: { nombre: string }
-    Material: { nombre: string }
+    Color: { name: 'string nullable', type: 'enum:rgba,rgb,hex', code: 'string nullable', relationships: { hasMany: Feature } }
+    Material: { name: string, slug: string, relationships: { hasMany: Feature } }
     Producto: { nombre: string, descripcion: text }
-    Extra: { factura_id: id }
+    Extra: { concept: string, value: 'integer nullable', percent: 'integer nullable', type: 'enum:inc,dec', ticket_id: id }
     BilleteraTipo: { banco_id: id }
     BilleteraMovimiento: { valor: integer }
     Banco: { nombre: string }
     DatosUsuario: { user_id: id }
     Cliente: { empresa_id: id }
-    Score: { cliente_id: id }
+    Score: { sales: unsignedInteger, profit: unsignedBigInteger, starts: unsignedInteger, client_id: id }
     Municipio: { nombre: string, departamento_id: id }
     Departamento: { nombre: string }
+    Company: { name: string, color: string, relationships: { hasMany: 'Fiscal, Point, Client' } }
+    Industry: { name: string, relationships: { hasMany: Fiscal } }
+    Tax: { name: string, percent: 'integer nullable', value: 'bigInteger nullable', relationships: { belongsToMany: Fiscal } }
+    Contact: { tel: 'bigInteger nullable', cel_one: 'bigInteger nullable', cel_two: 'bigInteger nullable', whatsapp: 'bigInteger nullable', telegram: 'bigInteger nullable', facebook: 'string nullable', instagram: 'string nullable', twitter: 'string nullable', linkedin: 'string nullable', email: 'string nullable', web: 'string nullable', address_id: 'id nullable', modeltable_type: string, modeltable_id: unsignedBigInteger }
+    Address: { description_id: string, municipality_id: id, relationships: { hasMany: Contact } }
+    File: { format: 'enum:image,doc,pdf,url', type: 'enum:transaccion,perfil,producto,rut,cedula,camara,ref_comercial,ref_personal,ref_bancaria,cer_libertad,balance,tarjeta_profesional,extecto,nit', route: string, comment: 'text nullable', modeltable_type: string, modeltable_id: unsignedBigInteger }
+    Point: { company_id: id, type: 'enum:oficina,bodega,almacen,principal', comment: nullable, relationships: { hasMany: 'Inventary, Ticket' } }
+    Inventary: { point_id: id, asset_id: id }
+    Ticket: { total: bigInteger, utc: bigInteger, point_id: id, creator_id: 'id foreign:users', vendor_id: 'id foreign:users', relationships: { hasMany: Extra } }
+    Asset: { name: string, description: text, creator_id: 'id foreign:users', valoration: bigInteger, relationships: { hasMany: 'Inventary, Feature', belongsToMany: Category } }
+    Listsale: { feature_id: id, value: bigInteger, state: 'enum:activo,inactivo', utc_start: 'bigInteger nullable', utc_end: 'bigInteger nullable', relationships: { hasMany: Product } }
+    Feature: { reference: 'string nullable', weight: 'decimal:10,1 nullable', size: 'string nullable', width: 'integer nullable', height: 'integer nullable', texture: 'string nullable', units: 'default:1', max: 'integer nullable', min: 'integer default:1', asset_id: id, color_id: id, material_id: id, relationships: { hasMany: Listsale } }
+    Product: { name: string, feature: text, units: integer, listsale_id: id }
+    Wallet: { modeltable_type: string, modeltable_id: unsignedBigInteger, wallettype_id: id, relationships: { hasMany: Walletmoviment } }
+    Wallettype: { type: 'enum:efectivo,ahorros,daviplata,nequi,movi,ticket,credito', bank_id: 'id nullable', limit: 'bigInteger nullable', relationships: { hasMany: Wallet } }
+    Walletmoviment: { value: bigInteger, interest: bigInteger, utc_start: 'bigInteger nullable', utc_end: 'bigInteger nullable', type: 'enum:inc,dec', state: 'enum:aprobado,desaprobado', wallet_id: id }
+    Bank: { name: string }
+    Userdata: { stature: 'integer nullable', weight: 'integer nullable', size: string, gender: 'enum:masculino,femenino', type_document: 'enum:cc,ce,ti,rc,pp nullable', number_document: 'bigInteger nullable', modeltable_type: 'string nullable', modeltable_id: 'unsignedBigInteger nullable' }
+    Client: { name: string, company_id: id, relationships: { hasMany: Score } }
+    Municipality: { name: string, departament_id: id, relationships: { hasMany: Address } }
+    Departament: { name: string }
+    Category: { name: string, slug: string, relationships: { belongsToMany: Asset } }
