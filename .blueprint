@@ -38,35 +38,35 @@ created:
     - database/factories/MunicipalityFactory.php
     - database/factories/DepartamentFactory.php
     - database/factories/CategoryFactory.php
-    - database/migrations/2021_03_01_222337_create_companies_table.php
-    - database/migrations/2021_03_01_222338_create_industries_table.php
-    - database/migrations/2021_03_01_222339_create_fiscals_table.php
-    - database/migrations/2021_03_01_222340_create_taxes_table.php
-    - database/migrations/2021_03_01_222341_create_contacts_table.php
-    - database/migrations/2021_03_01_222342_create_addresses_table.php
-    - database/migrations/2021_03_01_222343_create_files_table.php
-    - database/migrations/2021_03_01_222344_create_points_table.php
-    - database/migrations/2021_03_01_222345_create_inventaries_table.php
-    - database/migrations/2021_03_01_222346_create_tickets_table.php
-    - database/migrations/2021_03_01_222347_create_assets_table.php
-    - database/migrations/2021_03_01_222348_create_listsales_table.php
-    - database/migrations/2021_03_01_222349_create_features_table.php
-    - database/migrations/2021_03_01_222350_create_colors_table.php
-    - database/migrations/2021_03_01_222351_create_materials_table.php
-    - database/migrations/2021_03_01_222352_create_products_table.php
-    - database/migrations/2021_03_01_222353_create_extras_table.php
-    - database/migrations/2021_03_01_222354_create_wallets_table.php
-    - database/migrations/2021_03_01_222355_create_wallettypes_table.php
-    - database/migrations/2021_03_01_222356_create_walletmoviments_table.php
-    - database/migrations/2021_03_01_222357_create_banks_table.php
-    - database/migrations/2021_03_01_222358_create_userdatas_table.php
-    - database/migrations/2021_03_01_222359_create_clients_table.php
-    - database/migrations/2021_03_01_222400_create_scores_table.php
-    - database/migrations/2021_03_01_222401_create_municipalities_table.php
-    - database/migrations/2021_03_01_222402_create_departaments_table.php
-    - database/migrations/2021_03_01_222403_create_categories_table.php
-    - database/migrations/2021_03_01_222404_create_fiscal_tax_table.php
-    - database/migrations/2021_03_01_222405_create_asset_category_table.php
+    - database/migrations/2021_03_01_224932_create_companies_table.php
+    - database/migrations/2021_03_01_224933_create_industries_table.php
+    - database/migrations/2021_03_01_224934_create_fiscals_table.php
+    - database/migrations/2021_03_01_224935_create_taxes_table.php
+    - database/migrations/2021_03_01_224936_create_contacts_table.php
+    - database/migrations/2021_03_01_224937_create_addresses_table.php
+    - database/migrations/2021_03_01_224938_create_files_table.php
+    - database/migrations/2021_03_01_224939_create_points_table.php
+    - database/migrations/2021_03_01_224940_create_inventaries_table.php
+    - database/migrations/2021_03_01_224941_create_tickets_table.php
+    - database/migrations/2021_03_01_224942_create_assets_table.php
+    - database/migrations/2021_03_01_224943_create_listsales_table.php
+    - database/migrations/2021_03_01_224944_create_features_table.php
+    - database/migrations/2021_03_01_224945_create_colors_table.php
+    - database/migrations/2021_03_01_224946_create_materials_table.php
+    - database/migrations/2021_03_01_224947_create_products_table.php
+    - database/migrations/2021_03_01_224948_create_extras_table.php
+    - database/migrations/2021_03_01_224949_create_wallets_table.php
+    - database/migrations/2021_03_01_224950_create_wallettypes_table.php
+    - database/migrations/2021_03_01_224951_create_walletmoviments_table.php
+    - database/migrations/2021_03_01_224952_create_banks_table.php
+    - database/migrations/2021_03_01_224953_create_userdatas_table.php
+    - database/migrations/2021_03_01_224954_create_clients_table.php
+    - database/migrations/2021_03_01_224955_create_scores_table.php
+    - database/migrations/2021_03_01_224956_create_municipalities_table.php
+    - database/migrations/2021_03_01_224957_create_departaments_table.php
+    - database/migrations/2021_03_01_224958_create_categories_table.php
+    - database/migrations/2021_03_01_224959_create_fiscal_tax_table.php
+    - database/migrations/2021_03_01_225000_create_asset_category_table.php
     - app/Models/Company.php
     - app/Models/Industry.php
     - app/Models/Fiscal.php
