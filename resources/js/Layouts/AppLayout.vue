@@ -229,9 +229,9 @@
           </div>
 
             <!-- Page Content -->
-            <main>
+            <!-- <main>
                 <slot></slot>
-            </main>
+            </main> -->
         </div>
     </div>
 </template>

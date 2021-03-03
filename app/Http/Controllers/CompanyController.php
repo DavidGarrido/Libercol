@@ -51,7 +51,7 @@ class CompanyController extends Controller
 
         $request->session()->flash('company.id', $company->id);
 
-        return redirect()->route('companies.index');
+        return Redirect::route('companies.index')->with('success', 'Empresa creada.');
     }
 
     /**
@@ -94,7 +94,7 @@ class CompanyController extends Controller
         // $request->session()->flash('company.id', $company->id);
 
         // return redirect()->route('companies.show', $company);
-        return Redirect::back()->with('success', 'Organization updated.');
+        return Redirect::route('companies.show', $company)->with('success', 'Organization updated.');
         // return Redirect::route('companies.show', $company);
     }
 
@@ -107,6 +107,7 @@ class CompanyController extends Controller
     {
         $company->delete();
 
-        return redirect()->route('company.index');
+        // return redirect()->route('company.index');
+        return Redirect::route('companies.index')->with('success', 'Empresa Eliminada');
     }
 }

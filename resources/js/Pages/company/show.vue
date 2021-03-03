@@ -8,6 +8,7 @@
                     <inertia-link class="px-6 py-4 flex items-center" :href="route('companies.edit', companie.id)" tabindex="-1">
                         Editar
                     </inertia-link>
+                    <button @click="destroy">Eliminar</button>
                     <!-- <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('companies.index')">Compañias</inertia-link> -->
                 </div>
             </div>
@@ -24,6 +25,13 @@
         },
         props: {
             companie: Object,
+        },
+        methods: {
+            destroy(){
+                if (confirm('¿seguro desea eliminar?')) {
+                    this.$inertia.delete(this.route('companies.destroy',this.companie.id))
+                }
+            }
         }
     }
 </script>
