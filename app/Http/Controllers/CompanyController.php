@@ -6,6 +6,7 @@ use App\Http\Requests\CompanyStoreRequest;
 use App\Http\Requests\CompanyUpdateRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
 
@@ -90,9 +91,10 @@ class CompanyController extends Controller
     {
         $company->update($request->validated());
 
-        $request->session()->flash('company.id', $company->id);
+        // $request->session()->flash('company.id', $company->id);
 
-        return redirect()->route('company.index');
+        // return redirect()->route('companies.show', $company);
+        return Redirect::back()->with('success', 'Organization updated.');
     }
 
     /**

@@ -31,7 +31,7 @@
             return {
                 form: this.$inertia.form({
                     name: null,
-                    color: null
+                    color: '#783511'
                 })
             }
         },
