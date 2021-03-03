@@ -223,6 +223,10 @@
                     <slot name="header"></slot>
                 </div>
             </header>
+          <div class="md:flex-1 px-4 py-8 md:p-12 md:overflow-y-auto" scroll-region>
+            <flash-messages />
+            <slot />
+          </div>
 
             <!-- Page Content -->
             <main>
@@ -239,6 +243,7 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import FlashMessages from '@/Layouts/FlashMessages'
 
     export default {
         components: {
@@ -248,6 +253,7 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            FlashMessages,
         },
 
         data() {

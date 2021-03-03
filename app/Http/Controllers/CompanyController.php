@@ -95,6 +95,7 @@ class CompanyController extends Controller
 
         // return redirect()->route('companies.show', $company);
         return Redirect::back()->with('success', 'Organization updated.');
+        // return Redirect::route('companies.show', $company);
     }
 
     /**

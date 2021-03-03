@@ -55,10 +55,10 @@ Route::group(['middleware' => ['auth:sanctum','verified']], function() {
     Route::resource('municipality', MunicipalityController::class)->names('municipalities');    
     Route::resource('departament', DepartamentController::class)->names('departaments');    
     
-    Route::resource('{rol}ticket', TicketController::class)->names('tickets');    
-    Route::resource('{rol}inventary', InventaryController::class)->names('inventaries');    
-    Route::resource('{rol}asset', AssetController::class)->names('assets');    
-    Route::resource('{rol}client', ClientController::class)->names('clients');    
-    Route::resource('{rol}point', PointController::class)->names('points');    
-    Route::resource('{rol}category', CategoryController::class)->names('categories');
+    Route::resource('{rol}/ticket', TicketController::class)->names('tickets');    
+    Route::resource('{rol}/inventary', InventaryController::class)->names('inventaries');    
+    Route::resource('{rol}/asset', AssetController::class)->names('assets');    
+    Route::resource('{rol}/client', ClientController::class)->names('clients');    
+    Route::resource('{rol}/point', PointController::class)->names('points');    
+    Route::resource('{rol}/category', CategoryController::class)->names('categories');
 });
