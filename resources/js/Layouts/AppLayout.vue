@@ -23,6 +23,9 @@
                                 <jet-nav-link :href="route('companies.index')" :active="route().current('companies.index')">
                                     Empresas
                                 </jet-nav-link>
+                                <!-- <jet-nav-link :href="route('points.index')" :active="route().current('companies.index')">
+                                    Puntos
+                                </jet-nav-link> -->
                             </div>
                         </div>
 

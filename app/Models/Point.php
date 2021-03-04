@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 
 class Point extends Model
 {
     use HasFactory;
+    use HasRoles;
 
     /**
      * The attributes that aren't mass assignable.
@@ -26,7 +28,9 @@ class Point extends Model
         'company_id' => 'integer',
     ];
 
-
+    public function guardName(){
+        return "web";
+    }
     public function inventaries()
     {
         return $this->hasMany(\App\Models\Inventary::class);

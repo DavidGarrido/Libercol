@@ -1,7 +1,22 @@
-{{--
-    @extends('layouts.app')
+<template>
+    <app-layout>
 
-    @section('content')
-        color.index template
-    @endsection
---}}
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    hola desde points
+                </div>
+            </div>
+        </div>
+    </app-layout>
+</template>
+
+<script>
+    import AppLayout from '@/Layouts/AppLayout'
+
+    export default {
+        components: {
+            AppLayout,
+        },
+    }
+</script>
