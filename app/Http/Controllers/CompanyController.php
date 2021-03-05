@@ -51,13 +51,12 @@ class CompanyController extends Controller
     {
         $company = Company::create($request->validated());
 
-        $request->session()->flash('company.id', $company->id);
 
         $code = Str::random(10);
 
         $role = Role::create([
             'name' => 'SuperAdmin',
-            'slug' => 'superadmin-'.$company->name.'-'.$code,
+            'slug' => 'superadmin-'.$company->name.'-'.strtolower($code),
             'code' => $code
         ]);
 

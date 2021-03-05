@@ -24,6 +24,11 @@ class Company extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+    public function getRouteKeyName()
+    {
+        // return $this->getKeyName();
+        return 'slug';
+    }
 
 
     public function fiscals()

@@ -26,6 +26,11 @@ class Role extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+    public function getRouteKeyName()
+    {
+        // return $this->getKeyName();
+        return 'slug';
+    }
 
 
     public function permissions()

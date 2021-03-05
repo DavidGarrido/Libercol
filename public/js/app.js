@@ -18268,7 +18268,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     destroy: function destroy() {
       if (confirm('¿seguro desea eliminar?')) {
-        this.$inertia["delete"](this.route('companies.destroy', this.companie.id));
+        this.$inertia["delete"](this.route('companies.destroy', this.companie.slug));
       }
     }
   }
@@ -23324,7 +23324,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(companie.name), 1
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <inertia-link :href=\"route('companies.edit',companie.id)\" class=\"hover:underline flex w-1/12 justify-center items-center\">Editar</inertia-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-          href: _ctx.route('companies.show', companie.id),
+          href: _ctx.route('companies.show', companie.slug),
           "class": "hover:underline flex w-1/12 justify-center items-center"
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -23387,7 +23387,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* TEXT */
       ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         "class": "px-6 py-4 flex items-center",
-        href: _ctx.route('companies.edit', $props.companie.id),
+        href: _ctx.route('companies.edit', $props.companie.slug),
         tabindex: "-1"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {

@@ -17,7 +17,6 @@ class PointController extends Controller
      */
     public function index(Request $request, Role $rol)
     {
-        dd($rol->companies);
         $points = Point::all();
 
         

@@ -5,7 +5,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg flex justify-between items-center">
                     <h1 class="p-2 text-3xl font-bold text-gray-500">{{companie.name}}</h1>
-                    <inertia-link class="px-6 py-4 flex items-center" :href="route('companies.edit', companie.id)" tabindex="-1">
+                    <inertia-link class="px-6 py-4 flex items-center" :href="route('companies.edit', companie.slug)" tabindex="-1">
                         Editar
                     </inertia-link>
                     <button @click="destroy">Eliminar</button>
@@ -29,7 +29,7 @@
         methods: {
             destroy(){
                 if (confirm('¿seguro desea eliminar?')) {
-                    this.$inertia.delete(this.route('companies.destroy',this.companie.id))
+                    this.$inertia.delete(this.route('companies.destroy',this.companie.slug))
                 }
             }
         }
