@@ -57,7 +57,8 @@ class CompanyController extends Controller
 
         $role = Role::create([
             'name' => 'SuperAdmin',
-            'slug' => 'superadmin-'.$company->name.'-'.$code
+            'slug' => 'superadmin-'.$company->name.'-'.$code,
+            'code' => $code
         ]);
 
         $role->companies()->attach($company);

@@ -114,18 +114,6 @@ created:
     - tests/Feature/Http/Controllers/MunicipalityControllerTest.php
     - tests/Feature/Http/Controllers/DepartamentControllerTest.php
     - tests/Feature/Http/Controllers/CategoryControllerTest.php
-    - app/Http/Requests/RoleStoreRequest.php
-    - app/Http/Requests/RoleUpdateRequest.php
-    - app/Http/Requests/PermissionStoreRequest.php
-    - app/Http/Requests/PermissionUpdateRequest.php
-    - resources/views/role/index.blade.php
-    - resources/views/role/create.blade.php
-    - resources/views/role/show.blade.php
-    - resources/views/role/edit.blade.php
-    - resources/views/permission/index.blade.php
-    - resources/views/permission/create.blade.php
-    - resources/views/permission/show.blade.php
-    - resources/views/permission/edit.blade.php
 updated:
     - database/migrations/2021_03_01_224932_create_companies_table.php
     - database/migrations/2021_03_01_224933_create_industries_table.php
@@ -210,5 +198,5 @@ models:
     Municipality: { name: string, departament_id: id, relationships: { hasMany: Address } }
     Departament: { name: string }
     Category: { name: string, slug: string, relationships: { belongsToMany: Asset } }
-    Role: { name: string, slug: string, relationships: { belongsToMany: Permission } }
+    Role: { name: string, slug: string, code: 'string unique', relationships: { belongsToMany: Permission } }
     Permission: { name: string, slug: string, relationships: { belongsToMany: Role } }

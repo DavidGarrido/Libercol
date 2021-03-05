@@ -62,3 +62,32 @@ Route::group(['middleware' => ['auth:sanctum','verified']], function() {
     Route::resource('{rol}/point', PointController::class)->names('points');    
     Route::resource('{rol}/category', CategoryController::class)->names('categories');
 });
+
+
+Route::resource('company', 'CompanyController');
+
+Route::resource('role', 'RoleController');
+
+Route::resource('permission', 'PermissionController');
+
+Route::resource('point', 'PointController');
+
+Route::resource('inventary', 'InventaryController');
+
+Route::resource('ticket', 'TicketController');
+
+Route::resource('asset', 'AssetController');
+
+Route::resource('wallet', 'WalletController');
+
+Route::resource('color', 'ColorController');
+
+Route::resource('material', 'MaterialController');
+
+Route::resource('client', 'ClientController');
+
+Route::resource('municipality', 'MunicipalityController');
+
+Route::resource('departament', 'DepartamentController');
+
+Route::resource('category', 'CategoryController');

@@ -61,15 +61,18 @@ class RoleControllerTest extends TestCase
     {
         $name = $this->faker->name;
         $slug = $this->faker->slug;
+        $code = $this->faker->word;
 
         $response = $this->post(route('role.store'), [
             'name' => $name,
             'slug' => $slug,
+            'code' => $code,
         ]);
 
         $roles = Role::query()
             ->where('name', $name)
             ->where('slug', $slug)
+            ->where('code', $code)
             ->get();
         $this->assertCount(1, $roles);
         $role = $roles->first();
@@ -129,10 +132,12 @@ class RoleControllerTest extends TestCase
         $role = Role::factory()->create();
         $name = $this->faker->name;
         $slug = $this->faker->slug;
+        $code = $this->faker->word;
 
         $response = $this->put(route('role.update', $role), [
             'name' => $name,
             'slug' => $slug,
+            'code' => $code,
         ]);
 
         $role->refresh();
@@ -142,6 +147,7 @@ class RoleControllerTest extends TestCase
 
         $this->assertEquals($name, $role->name);
         $this->assertEquals($slug, $role->slug);
+        $this->assertEquals($code, $role->code);
     }
 
 

@@ -185,6 +185,7 @@ models:
   Role:
     name: string
     slug: string
+    code: string unique
     relationships:
       belongsToMany: Permission
   Permission:

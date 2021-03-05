@@ -16,7 +16,7 @@ class Role extends Model
      */
     protected $guarded = [];
 
-    protected $fillable = ['name','slug'];
+    protected $fillable = ['name','slug','code'];
 
     /**
      * The attributes that should be cast to native types.
