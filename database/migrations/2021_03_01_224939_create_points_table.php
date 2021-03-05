@@ -17,7 +17,7 @@ class CreatePointsTable extends Migration
 
         Schema::create('points', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('company_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->enum('type', ["oficina","bodega","almacen","principal"]);
             $table->string('comment')->nullable();
             $table->timestamps();

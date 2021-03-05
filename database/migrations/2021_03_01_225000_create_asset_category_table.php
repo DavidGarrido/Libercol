@@ -16,8 +16,8 @@ class CreateAssetCategoryTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('asset_category', function (Blueprint $table) {
-            $table->foreignId('asset_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('asset_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
 
         Schema::enableForeignKeyConstraints();

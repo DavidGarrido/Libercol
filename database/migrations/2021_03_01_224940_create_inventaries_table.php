@@ -17,8 +17,8 @@ class CreateInventariesTable extends Migration
 
         Schema::create('inventaries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('point_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('asset_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('point_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('asset_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
 

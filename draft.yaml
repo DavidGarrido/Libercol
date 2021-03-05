@@ -182,8 +182,22 @@ models:
     slug: string
     relationships:
       belongsToMany: Asset
+  Role:
+    name: string
+    slug: string
+    relationships:
+      belongsToMany: Permission
+  Permission:
+    name: string
+    slug: string
+    relationships:
+      belongsToMany: Role
 controllers:
   Company:
+    resource
+  Role:
+    resource
+  Permission:
     resource
   Point:
     resource
@@ -207,4 +221,4 @@ controllers:
     resource
   Category:
     resource
-seeders: Company, Industry, Fiscal, Tax, Contact, Address, File, Point, Inventary, Ticket, Asset, Listsale, Feature, Color, Material, Product, Extra, Wallet, Wallettype, Walletmoviment, Bank, Userdata, Client, Score, Municipality, Departament, Category
+seeders: Company, Industry, Fiscal, Tax, Contact, Address, File, Point, Inventary, Ticket, Asset, Listsale, Feature, Color, Material, Product, Extra, Wallet, Wallettype, Walletmoviment, Bank, Userdata, Client, Score, Municipality, Departament, Category, Role, Permission

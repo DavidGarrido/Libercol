@@ -28,7 +28,7 @@ class CreateContactsTable extends Migration
             $table->string('linkedin')->nullable();
             $table->string('email')->nullable();
             $table->string('web')->nullable();
-            $table->foreignId('address_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('address_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('modeltable_type');
             $table->unsignedBigInteger('modeltable_id');
             $table->timestamps();

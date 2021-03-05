@@ -16,8 +16,8 @@ class CreateFiscalTaxTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('fiscal_tax', function (Blueprint $table) {
-            $table->foreignId('fiscal_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('tax_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('fiscal_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('tax_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
 
         Schema::enableForeignKeyConstraints();

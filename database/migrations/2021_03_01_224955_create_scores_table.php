@@ -20,7 +20,7 @@ class CreateScoresTable extends Migration
             $table->unsignedInteger('sales');
             $table->unsignedBigInteger('profit');
             $table->unsignedInteger('starts');
-            $table->foreignId('client_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('client_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
 

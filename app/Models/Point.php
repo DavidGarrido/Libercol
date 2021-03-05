@@ -26,9 +26,7 @@ class Point extends Model
         'company_id' => 'integer',
     ];
 
-    public function guardName(){
-        return "web";
-    }
+
     public function inventaries()
     {
         return $this->hasMany(\App\Models\Inventary::class);

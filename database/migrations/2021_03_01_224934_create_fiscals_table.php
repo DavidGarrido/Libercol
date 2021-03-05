@@ -17,8 +17,8 @@ class CreateFiscalsTable extends Migration
 
         Schema::create('fiscals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('industry_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('industry_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('company_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
 

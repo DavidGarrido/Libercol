@@ -19,7 +19,7 @@ class CreateWalletsTable extends Migration
             $table->id();
             $table->string('modeltable_type');
             $table->unsignedBigInteger('modeltable_id');
-            $table->foreignId('wallettype_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('wallettype_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
 

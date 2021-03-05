@@ -1,5 +1,7 @@
 created:
     - app/Http/Controllers/CompanyController.php
+    - app/Http/Controllers/RoleController.php
+    - app/Http/Controllers/PermissionController.php
     - app/Http/Controllers/PointController.php
     - app/Http/Controllers/InventaryController.php
     - app/Http/Controllers/TicketController.php
@@ -38,35 +40,8 @@ created:
     - database/factories/MunicipalityFactory.php
     - database/factories/DepartamentFactory.php
     - database/factories/CategoryFactory.php
-    - database/migrations/2021_03_01_224932_create_companies_table.php
-    - database/migrations/2021_03_01_224933_create_industries_table.php
-    - database/migrations/2021_03_01_224934_create_fiscals_table.php
-    - database/migrations/2021_03_01_224935_create_taxes_table.php
-    - database/migrations/2021_03_01_224936_create_contacts_table.php
-    - database/migrations/2021_03_01_224937_create_addresses_table.php
-    - database/migrations/2021_03_01_224938_create_files_table.php
-    - database/migrations/2021_03_01_224939_create_points_table.php
-    - database/migrations/2021_03_01_224940_create_inventaries_table.php
-    - database/migrations/2021_03_01_224941_create_tickets_table.php
-    - database/migrations/2021_03_01_224942_create_assets_table.php
-    - database/migrations/2021_03_01_224943_create_listsales_table.php
-    - database/migrations/2021_03_01_224944_create_features_table.php
-    - database/migrations/2021_03_01_224945_create_colors_table.php
-    - database/migrations/2021_03_01_224946_create_materials_table.php
-    - database/migrations/2021_03_01_224947_create_products_table.php
-    - database/migrations/2021_03_01_224948_create_extras_table.php
-    - database/migrations/2021_03_01_224949_create_wallets_table.php
-    - database/migrations/2021_03_01_224950_create_wallettypes_table.php
-    - database/migrations/2021_03_01_224951_create_walletmoviments_table.php
-    - database/migrations/2021_03_01_224952_create_banks_table.php
-    - database/migrations/2021_03_01_224953_create_userdatas_table.php
-    - database/migrations/2021_03_01_224954_create_clients_table.php
-    - database/migrations/2021_03_01_224955_create_scores_table.php
-    - database/migrations/2021_03_01_224956_create_municipalities_table.php
-    - database/migrations/2021_03_01_224957_create_departaments_table.php
-    - database/migrations/2021_03_01_224958_create_categories_table.php
-    - database/migrations/2021_03_01_224959_create_fiscal_tax_table.php
-    - database/migrations/2021_03_01_225000_create_asset_category_table.php
+    - database/factories/RoleFactory.php
+    - database/factories/PermissionFactory.php
     - app/Models/Company.php
     - app/Models/Industry.php
     - app/Models/Fiscal.php
@@ -94,6 +69,8 @@ created:
     - app/Models/Municipality.php
     - app/Models/Departament.php
     - app/Models/Category.php
+    - app/Models/Role.php
+    - app/Models/Permission.php
     - database/seeders/CompanySeeder.php
     - database/seeders/IndustrySeeder.php
     - database/seeders/FiscalSeeder.php
@@ -121,7 +98,11 @@ created:
     - database/seeders/MunicipalitySeeder.php
     - database/seeders/DepartamentSeeder.php
     - database/seeders/CategorySeeder.php
+    - database/seeders/RoleSeeder.php
+    - database/seeders/PermissionSeeder.php
     - tests/Feature/Http/Controllers/CompanyControllerTest.php
+    - tests/Feature/Http/Controllers/RoleControllerTest.php
+    - tests/Feature/Http/Controllers/PermissionControllerTest.php
     - tests/Feature/Http/Controllers/PointControllerTest.php
     - tests/Feature/Http/Controllers/InventaryControllerTest.php
     - tests/Feature/Http/Controllers/TicketControllerTest.php
@@ -133,79 +114,51 @@ created:
     - tests/Feature/Http/Controllers/MunicipalityControllerTest.php
     - tests/Feature/Http/Controllers/DepartamentControllerTest.php
     - tests/Feature/Http/Controllers/CategoryControllerTest.php
-    - app/Http/Requests/CompanyStoreRequest.php
-    - app/Http/Requests/CompanyUpdateRequest.php
-    - app/Http/Requests/PointStoreRequest.php
-    - app/Http/Requests/PointUpdateRequest.php
-    - app/Http/Requests/InventaryStoreRequest.php
-    - app/Http/Requests/InventaryUpdateRequest.php
-    - app/Http/Requests/TicketStoreRequest.php
-    - app/Http/Requests/TicketUpdateRequest.php
-    - app/Http/Requests/AssetStoreRequest.php
-    - app/Http/Requests/AssetUpdateRequest.php
-    - app/Http/Requests/WalletStoreRequest.php
-    - app/Http/Requests/WalletUpdateRequest.php
-    - app/Http/Requests/ColorStoreRequest.php
-    - app/Http/Requests/ColorUpdateRequest.php
-    - app/Http/Requests/MaterialStoreRequest.php
-    - app/Http/Requests/MaterialUpdateRequest.php
-    - app/Http/Requests/ClientStoreRequest.php
-    - app/Http/Requests/ClientUpdateRequest.php
-    - app/Http/Requests/MunicipalityStoreRequest.php
-    - app/Http/Requests/MunicipalityUpdateRequest.php
-    - app/Http/Requests/DepartamentStoreRequest.php
-    - app/Http/Requests/DepartamentUpdateRequest.php
-    - app/Http/Requests/CategoryStoreRequest.php
-    - app/Http/Requests/CategoryUpdateRequest.php
-    - resources/views/company/index.blade.php
-    - resources/views/company/create.blade.php
-    - resources/views/company/show.blade.php
-    - resources/views/company/edit.blade.php
-    - resources/views/point/index.blade.php
-    - resources/views/point/create.blade.php
-    - resources/views/point/show.blade.php
-    - resources/views/point/edit.blade.php
-    - resources/views/inventary/index.blade.php
-    - resources/views/inventary/create.blade.php
-    - resources/views/inventary/show.blade.php
-    - resources/views/inventary/edit.blade.php
-    - resources/views/ticket/index.blade.php
-    - resources/views/ticket/create.blade.php
-    - resources/views/ticket/show.blade.php
-    - resources/views/ticket/edit.blade.php
-    - resources/views/asset/index.blade.php
-    - resources/views/asset/create.blade.php
-    - resources/views/asset/show.blade.php
-    - resources/views/asset/edit.blade.php
-    - resources/views/wallet/index.blade.php
-    - resources/views/wallet/create.blade.php
-    - resources/views/wallet/show.blade.php
-    - resources/views/wallet/edit.blade.php
-    - resources/views/color/index.blade.php
-    - resources/views/color/create.blade.php
-    - resources/views/color/show.blade.php
-    - resources/views/color/edit.blade.php
-    - resources/views/material/index.blade.php
-    - resources/views/material/create.blade.php
-    - resources/views/material/show.blade.php
-    - resources/views/material/edit.blade.php
-    - resources/views/client/index.blade.php
-    - resources/views/client/create.blade.php
-    - resources/views/client/show.blade.php
-    - resources/views/client/edit.blade.php
-    - resources/views/municipality/index.blade.php
-    - resources/views/municipality/create.blade.php
-    - resources/views/municipality/show.blade.php
-    - resources/views/municipality/edit.blade.php
-    - resources/views/departament/index.blade.php
-    - resources/views/departament/create.blade.php
-    - resources/views/departament/show.blade.php
-    - resources/views/departament/edit.blade.php
-    - resources/views/category/index.blade.php
-    - resources/views/category/create.blade.php
-    - resources/views/category/show.blade.php
-    - resources/views/category/edit.blade.php
+    - app/Http/Requests/RoleStoreRequest.php
+    - app/Http/Requests/RoleUpdateRequest.php
+    - app/Http/Requests/PermissionStoreRequest.php
+    - app/Http/Requests/PermissionUpdateRequest.php
+    - resources/views/role/index.blade.php
+    - resources/views/role/create.blade.php
+    - resources/views/role/show.blade.php
+    - resources/views/role/edit.blade.php
+    - resources/views/permission/index.blade.php
+    - resources/views/permission/create.blade.php
+    - resources/views/permission/show.blade.php
+    - resources/views/permission/edit.blade.php
 updated:
+    - database/migrations/2021_03_01_224932_create_companies_table.php
+    - database/migrations/2021_03_01_224933_create_industries_table.php
+    - database/migrations/2021_03_01_224934_create_fiscals_table.php
+    - database/migrations/2021_03_01_224935_create_taxes_table.php
+    - database/migrations/2021_03_01_224936_create_contacts_table.php
+    - database/migrations/2021_03_01_224937_create_addresses_table.php
+    - database/migrations/2021_03_01_224938_create_files_table.php
+    - database/migrations/2021_03_01_224939_create_points_table.php
+    - database/migrations/2021_03_01_224940_create_inventaries_table.php
+    - database/migrations/2021_03_01_224941_create_tickets_table.php
+    - database/migrations/2021_03_01_224942_create_assets_table.php
+    - database/migrations/2021_03_01_224943_create_listsales_table.php
+    - database/migrations/2021_03_01_224944_create_features_table.php
+    - database/migrations/2021_03_01_224945_create_colors_table.php
+    - database/migrations/2021_03_01_224946_create_materials_table.php
+    - database/migrations/2021_03_01_224947_create_products_table.php
+    - database/migrations/2021_03_01_224948_create_extras_table.php
+    - database/migrations/2021_03_01_224949_create_wallets_table.php
+    - database/migrations/2021_03_01_224950_create_wallettypes_table.php
+    - database/migrations/2021_03_01_224951_create_walletmoviments_table.php
+    - database/migrations/2021_03_01_224952_create_banks_table.php
+    - database/migrations/2021_03_01_224953_create_userdatas_table.php
+    - database/migrations/2021_03_01_224954_create_clients_table.php
+    - database/migrations/2021_03_01_224955_create_scores_table.php
+    - database/migrations/2021_03_01_224956_create_municipalities_table.php
+    - database/migrations/2021_03_01_224957_create_departaments_table.php
+    - database/migrations/2021_03_01_224958_create_categories_table.php
+    - database/migrations/2021_03_05_163109_create_roles_table.php
+    - database/migrations/2021_03_05_163110_create_permissions_table.php
+    - database/migrations/2021_03_01_224959_create_fiscal_tax_table.php
+    - database/migrations/2021_03_01_225000_create_asset_category_table.php
+    - database/migrations/2021_03_05_163113_create_permission_role_table.php
     - routes/web.php
 models:
     Empresa: { nombre: string }
@@ -257,3 +210,5 @@ models:
     Municipality: { name: string, departament_id: id, relationships: { hasMany: Address } }
     Departament: { name: string }
     Category: { name: string, slug: string, relationships: { belongsToMany: Asset } }
+    Role: { name: string, slug: string, relationships: { belongsToMany: Permission } }
+    Permission: { name: string, slug: string, relationships: { belongsToMany: Role } }

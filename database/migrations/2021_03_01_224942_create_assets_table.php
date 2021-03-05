@@ -19,7 +19,7 @@ class CreateAssetsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->foreignId('creator_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('creator_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->bigInteger('valoration');
             $table->timestamps();
         });

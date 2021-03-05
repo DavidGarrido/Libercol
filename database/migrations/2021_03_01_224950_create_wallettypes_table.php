@@ -18,7 +18,7 @@ class CreateWallettypesTable extends Migration
         Schema::create('wallettypes', function (Blueprint $table) {
             $table->id();
             $table->enum('type', ["efectivo","ahorros","daviplata","nequi","movi","ticket","credito"]);
-            $table->foreignId('bank_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('bank_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->bigInteger('limit')->nullable();
             $table->timestamps();
         });

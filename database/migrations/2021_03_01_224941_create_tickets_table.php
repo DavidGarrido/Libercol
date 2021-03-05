@@ -19,9 +19,9 @@ class CreateTicketsTable extends Migration
             $table->id();
             $table->bigInteger('total');
             $table->bigInteger('utc');
-            $table->foreignId('point_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('creator_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('vendor_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('point_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('creator_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('vendor_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
 

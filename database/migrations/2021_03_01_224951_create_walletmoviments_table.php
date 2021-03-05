@@ -23,7 +23,7 @@ class CreateWalletmovimentsTable extends Migration
             $table->bigInteger('utc_end')->nullable();
             $table->enum('type', ["inc","dec"]);
             $table->enum('state', ["aprobado","desaprobado"]);
-            $table->foreignId('wallet_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('wallet_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
 

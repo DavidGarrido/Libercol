@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('feature');
             $table->integer('units');
-            $table->foreignId('listsale_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('listsale_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
 

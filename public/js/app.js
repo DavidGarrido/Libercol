@@ -44281,6 +44281,78 @@ script.__file = "resources/js/Pages/municipality/show.vue"
 
 /***/ }),
 
+/***/ "./resources/js/Pages/permission/create.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/Pages/permission/create.vue ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/Pages/permission/create.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/permission/edit.vue":
+/*!************************************************!*\
+  !*** ./resources/js/Pages/permission/edit.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/Pages/permission/edit.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/permission/index.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/Pages/permission/index.vue ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/Pages/permission/index.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/permission/show.vue":
+/*!************************************************!*\
+  !*** ./resources/js/Pages/permission/show.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/Pages/permission/show.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/point/create.vue":
 /*!*********************************************!*\
   !*** ./resources/js/Pages/point/create.vue ***!
@@ -44356,6 +44428,78 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const script = {}
 script.__file = "resources/js/Pages/point/show.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/role/create.vue":
+/*!********************************************!*\
+  !*** ./resources/js/Pages/role/create.vue ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/Pages/role/create.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/role/edit.vue":
+/*!******************************************!*\
+  !*** ./resources/js/Pages/role/edit.vue ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/Pages/role/edit.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/role/index.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/Pages/role/index.vue ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/Pages/role/index.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/role/show.vue":
+/*!******************************************!*\
+  !*** ./resources/js/Pages/role/show.vue ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/Pages/role/show.vue"
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
 
@@ -46451,6 +46595,16 @@ var map = {
 	"./municipality/index.vue": "./resources/js/Pages/municipality/index.vue",
 	"./municipality/show": "./resources/js/Pages/municipality/show.vue",
 	"./municipality/show.vue": "./resources/js/Pages/municipality/show.vue",
+	"./permission": "./resources/js/Pages/permission/index.vue",
+	"./permission/": "./resources/js/Pages/permission/index.vue",
+	"./permission/create": "./resources/js/Pages/permission/create.vue",
+	"./permission/create.vue": "./resources/js/Pages/permission/create.vue",
+	"./permission/edit": "./resources/js/Pages/permission/edit.vue",
+	"./permission/edit.vue": "./resources/js/Pages/permission/edit.vue",
+	"./permission/index": "./resources/js/Pages/permission/index.vue",
+	"./permission/index.vue": "./resources/js/Pages/permission/index.vue",
+	"./permission/show": "./resources/js/Pages/permission/show.vue",
+	"./permission/show.vue": "./resources/js/Pages/permission/show.vue",
 	"./point": "./resources/js/Pages/point/index.vue",
 	"./point/": "./resources/js/Pages/point/index.vue",
 	"./point/create": "./resources/js/Pages/point/create.vue",
@@ -46461,6 +46615,16 @@ var map = {
 	"./point/index.vue": "./resources/js/Pages/point/index.vue",
 	"./point/show": "./resources/js/Pages/point/show.vue",
 	"./point/show.vue": "./resources/js/Pages/point/show.vue",
+	"./role": "./resources/js/Pages/role/index.vue",
+	"./role/": "./resources/js/Pages/role/index.vue",
+	"./role/create": "./resources/js/Pages/role/create.vue",
+	"./role/create.vue": "./resources/js/Pages/role/create.vue",
+	"./role/edit": "./resources/js/Pages/role/edit.vue",
+	"./role/edit.vue": "./resources/js/Pages/role/edit.vue",
+	"./role/index": "./resources/js/Pages/role/index.vue",
+	"./role/index.vue": "./resources/js/Pages/role/index.vue",
+	"./role/show": "./resources/js/Pages/role/show.vue",
+	"./role/show.vue": "./resources/js/Pages/role/show.vue",
 	"./ticket": "./resources/js/Pages/ticket/index.vue",
 	"./ticket/": "./resources/js/Pages/ticket/index.vue",
 	"./ticket/create": "./resources/js/Pages/ticket/create.vue",

@@ -17,7 +17,7 @@ class CreateListsalesTable extends Migration
 
         Schema::create('listsales', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('feature_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('feature_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->bigInteger('value');
             $table->enum('state', ["activo","inactivo"]);
             $table->bigInteger('utc_start')->nullable();

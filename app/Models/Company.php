@@ -24,9 +24,6 @@ class Company extends Model
     protected $casts = [
         'id' => 'integer',
     ];
-    public function guardName(){
-        return "web";
-    }
 
 
     public function fiscals()

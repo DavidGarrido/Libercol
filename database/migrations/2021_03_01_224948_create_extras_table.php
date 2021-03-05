@@ -21,7 +21,7 @@ class CreateExtrasTable extends Migration
             $table->integer('value')->nullable();
             $table->integer('percent')->nullable();
             $table->enum('type', ["inc","dec"]);
-            $table->foreignId('ticket_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('ticket_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
 
