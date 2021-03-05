@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
 use Illuminate\Support\Str;
-use Spatie\Permission\Models\Role;
 
 class CompanyController extends Controller
 {
@@ -54,17 +53,10 @@ class CompanyController extends Controller
         $request->session()->flash('company.id', $company->id);
 
         $name = Str::random(10);
-        $role = Role::create([
-            'name' => $name,
-            'guard_name' => 'web',
-            'nombre' => 'SuperAdmin'
-        ]);
 
-        $company->assignRole($role);
 
-        auth()->user()->assignRole($role);
 
-        return Redirect::route('points.index',$role)->with('success', 'Empresa creada.');
+        return Redirect::route('companies.index')->with('success', 'Empresa creada.');
     }
 
     /**

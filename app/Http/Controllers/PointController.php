@@ -7,7 +7,6 @@ use App\Http\Requests\PointUpdateRequest;
 use App\Models\Point;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Spatie\Permission\Models\Role;
 
 class PointController extends Controller
 {
@@ -15,7 +14,7 @@ class PointController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Role $rol)
+    public function index(Request $request)
     {
         $points = Point::all();
 

@@ -41,8 +41,7 @@ class DatabaseSeeder extends Seeder
             UserdataSeeder::class,
             ClientSeeder::class,
             ScoreSeeder::class,
-            CategorySeeder::class,
-            RoleSeeder::class,
+            CategorySeeder::class
         ]);
     }
 }
