@@ -40,4 +40,9 @@ class Company extends Model
     {
         return $this->hasMany(\App\Models\Client::class);
     }
+    //relacion muchos a muchos polimorfica
+    public function roles()
+    {
+        return $this->morphToMany(\App\Models\Role::class, 'rolegable');
+    }
 }

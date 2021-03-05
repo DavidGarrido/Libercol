@@ -7,7 +7,7 @@
                     <form @submit.prevent="store" class="flex flex-col">
                         <br>
                         <p>Nombre</p>
-                        <input type="text" v-model="form.name" class="p-1 rounded-lg border border-gray-200">
+                        <input type="text" v-model="form.name" class="p-1 rounded-lg border border-gray-200" autofocus>
                         <br>
                         <p>Color</p>
                         <input type="color" v-model="form.color">

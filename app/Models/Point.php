@@ -41,4 +41,10 @@ class Point extends Model
     {
         return $this->belongsTo(\App\Models\Company::class);
     }
+
+    //relacion muchos a muchos polimorfica
+    public function roles()
+    {
+        return $this->morphToMany(\App\Models\Role::class, 'rolegable');
+    }
 }

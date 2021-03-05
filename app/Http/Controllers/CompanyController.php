@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CompanyStoreRequest;
 use App\Http\Requests\CompanyUpdateRequest;
 use App\Models\Company;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
@@ -52,11 +53,19 @@ class CompanyController extends Controller
 
         $request->session()->flash('company.id', $company->id);
 
-        $name = Str::random(10);
+        $code = Str::random(10);
+
+        $role = Role::create([
+            'name' => 'SuperAdmin',
+            'slug' => 'superadmin-'.$company->name.'-'.$code
+        ]);
+
+        $role->companies()->attach($company);
+        $role->users()->attach(auth()->user()->id);
 
 
 
-        return Redirect::route('companies.index')->with('success', 'Empresa creada.');
+        return Redirect::route('points.index',$role)->with('success', 'Empresa creada.');
     }
 
     /**

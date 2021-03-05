@@ -58,4 +58,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    //relacion muchos a muchos polimorfica
+    public function roles()
+    {
+        return $this->morphToMany(\App\Models\Role::class, 'rolegable');
+    }
 }

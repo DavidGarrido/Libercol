@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PointStoreRequest;
 use App\Http\Requests\PointUpdateRequest;
 use App\Models\Point;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,9 +15,12 @@ class PointController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, Role $rol)
     {
+        dd($rol->companies);
         $points = Point::all();
+
+        
 
         // return view('point.index', compact('points'));
         return Inertia::render('point/index',['points' => $points]);

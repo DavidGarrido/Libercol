@@ -16,6 +16,8 @@ class Role extends Model
      */
     protected $guarded = [];
 
+    protected $fillable = ['name','slug'];
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -29,5 +31,17 @@ class Role extends Model
     public function permissions()
     {
         return $this->belongsToMany(\App\Models\Permission::class);
+    }
+    public function users()
+    {
+        return $this->morphedByMany(\App\Models\User::class, 'rolegable');
+    }
+    public function companies()
+    {
+        return $this->morphedByMany(\App\Models\Company::class, 'rolegable');
+    }
+    public function points()
+    {
+        return $this->morphedByMany(\App\Models\Point::class, 'rolegable');
     }
 }
