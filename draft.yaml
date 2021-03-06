@@ -2,6 +2,7 @@ models:
   Company:
     name: string
     color: string
+    slug: string
     relationships:
       hasMany: Fiscal, Point, Client
   Industry:
@@ -48,6 +49,7 @@ models:
     company_id: id
     type: enum:oficina,bodega,almacen,principal
     comment: nullable
+    slug: string
     relationships:
       hasMany: Inventary, Ticket
   Inventary:
@@ -60,10 +62,12 @@ models:
     point_id: id
     creator_id: id foreign:users
     vendor_id: id foreign:users
+    code: string
     relationships:
       hasMany: Extra
   Asset:
     name: string
+    slug: string
     description: text
     creator_id: id foreign:users
     valoration: bigInteger
@@ -99,6 +103,7 @@ models:
 # Code: El valor del codigo
 # Feature:
     name: string nullable
+    slug: string
     type: enum:rgba,rgb,hex
     code: string nullable
     relationships:
@@ -123,6 +128,7 @@ models:
     type: enum:inc,dec
     ticket_id: id
   Wallet:
+    code: string
     modeltable_type: string
     modeltable_id: unsignedBigInteger
     wallettype_id: id
@@ -144,6 +150,7 @@ models:
     wallet_id: id
   Bank:
     name: string
+    slug: string
   Userdata:
     stature: integer nullable
     weight: integer nullable
@@ -155,6 +162,7 @@ models:
     modeltable_id: unsignedBigInteger nullable 
   Client:
     name: string
+    code: string
     company_id: id
     relationships:
       hasMany: Score
@@ -171,12 +179,14 @@ models:
 # Departament_id: Una municipalidad ???? departamentos
 # Address: Para relacionarlo con las direccioens
     name: string
+    slug: string
     departament_id: id
     relationships:
       hasMany: Address
 # Name: El nombre de los departamentos que existen
   Departament:
     name: string
+    slug: string
   Category:
     name: string
     slug: string

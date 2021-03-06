@@ -61,15 +61,18 @@ class CompanyControllerTest extends TestCase
     {
         $name = $this->faker->name;
         $color = $this->faker->word;
+        $slug = $this->faker->slug;
 
         $response = $this->post(route('company.store'), [
             'name' => $name,
             'color' => $color,
+            'slug' => $slug,
         ]);
 
         $companies = Company::query()
             ->where('name', $name)
             ->where('color', $color)
+            ->where('slug', $slug)
             ->get();
         $this->assertCount(1, $companies);
         $company = $companies->first();
@@ -129,10 +132,12 @@ class CompanyControllerTest extends TestCase
         $company = Company::factory()->create();
         $name = $this->faker->name;
         $color = $this->faker->word;
+        $slug = $this->faker->slug;
 
         $response = $this->put(route('company.update', $company), [
             'name' => $name,
             'color' => $color,
+            'slug' => $slug,
         ]);
 
         $company->refresh();
@@ -142,6 +147,7 @@ class CompanyControllerTest extends TestCase
 
         $this->assertEquals($name, $company->name);
         $this->assertEquals($color, $company->color);
+        $this->assertEquals($slug, $company->slug);
     }
 
 

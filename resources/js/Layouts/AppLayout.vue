@@ -20,12 +20,9 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Inicio
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('companies.index')" :active="route().current('companies.index')">
+                                <jet-nav-link :href="route('companie')" :active="route().current('companie')">
                                     Empresas
                                 </jet-nav-link>
-                                <!-- <jet-nav-link :href="route('points.index')" :active="route().current('companies.index')">
-                                    Puntos
-                                </jet-nav-link> -->
                             </div>
                         </div>
 

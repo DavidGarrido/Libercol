@@ -8,6 +8,7 @@ use App\Models\Point;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
 
 class PointController extends Controller
 {
@@ -17,34 +18,59 @@ class PointController extends Controller
      */
     public function index(Request $request, Role $rol)
     {
-        $points = Point::all();
+        $points = $rol->points;
 
-        
 
         // return view('point.index', compact('points'));
-        return Inertia::render('point/index',['points' => $points]);
+
+        //comprobar si hay puntos relacionados a la empresa
+        // if ($rol->companies()->first()->points()->count()) {
+            // si hay puntos imprime la lista
+            return Inertia::render('point/index',[
+                'points' => $points,
+                'role' => $rol
+            ]);
+        // }else{
+            //si no hay puntos re-dirige a create
+            return redirect()->route('points.create',$rol);
+        // }
     }
 
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Request $request, Role $rol)
     {
-        return view('point.create');
+        // dd($rol);
+        return Inertia::render('point/create',[
+            'role' => $rol,
+            'companie' => $rol->companies()->first(),
+            'points' => $rol->companies()->first()->points
+        ]);
     }
 
     /**
      * @param \App\Http\Requests\PointStoreRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PointStoreRequest $request)
+    // public function store(PointStoreRequest $request, Role $rol)
+    public function store(Request $request, Role $rol)
     {
-        $point = Point::create($request->validated());
+        $code = Str::random(10);
 
-        $request->session()->flash('point.id', $point->id);
+        $point = Point::create([
+            'company_id' => $rol->companies()->first()->id,
+            'type' => $request->type,
+            'comment' => $request->comment,
+            'slug' => strtolower($code)
+        ]);
 
-        return redirect()->route('point.index');
+        $rol->points()->attach($point);
+
+        // $request->session()->flash('point.id', $point->id);
+
+        return redirect()->route('points.index', $rol);
     }
 
     /**

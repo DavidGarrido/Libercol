@@ -30,6 +30,7 @@ class TicketFactory extends Factory
             'point_id' => Point::factory(),
             'creator_id' => User::factory(),
             'vendor_id' => User::factory(),
+            'code' => $this->faker->word,
         ];
     }
 }

@@ -3,7 +3,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-3">
-                    <inertia-link :href="route('companies.index')">Compañias</inertia-link>
+                    <inertia-link :href="route('companie')">Compañias</inertia-link>
                     <form @submit.prevent="store" class="flex flex-col">
                         <br>
                         <p>Nombre</p>
@@ -31,7 +31,8 @@
             return {
                 form: this.$inertia.form({
                     name: null,
-                    color: '#783511'
+                    color: '#783511',
+                    slug: null,
                 })
             }
         },

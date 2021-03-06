@@ -67,6 +67,7 @@ class TicketControllerTest extends TestCase
         $point = Point::factory()->create();
         $creator = Creator::factory()->create();
         $vendor = Vendor::factory()->create();
+        $code = $this->faker->word;
 
         $response = $this->post(route('ticket.store'), [
             'total' => $total,
@@ -74,6 +75,7 @@ class TicketControllerTest extends TestCase
             'point_id' => $point->id,
             'creator_id' => $creator->id,
             'vendor_id' => $vendor->id,
+            'code' => $code,
         ]);
 
         $tickets = Ticket::query()
@@ -82,6 +84,7 @@ class TicketControllerTest extends TestCase
             ->where('point_id', $point->id)
             ->where('creator_id', $creator->id)
             ->where('vendor_id', $vendor->id)
+            ->where('code', $code)
             ->get();
         $this->assertCount(1, $tickets);
         $ticket = $tickets->first();
@@ -144,6 +147,7 @@ class TicketControllerTest extends TestCase
         $point = Point::factory()->create();
         $creator = Creator::factory()->create();
         $vendor = Vendor::factory()->create();
+        $code = $this->faker->word;
 
         $response = $this->put(route('ticket.update', $ticket), [
             'total' => $total,
@@ -151,6 +155,7 @@ class TicketControllerTest extends TestCase
             'point_id' => $point->id,
             'creator_id' => $creator->id,
             'vendor_id' => $vendor->id,
+            'code' => $code,
         ]);
 
         $ticket->refresh();
@@ -163,6 +168,7 @@ class TicketControllerTest extends TestCase
         $this->assertEquals($point->id, $ticket->point_id);
         $this->assertEquals($creator->id, $ticket->creator_id);
         $this->assertEquals($vendor->id, $ticket->vendor_id);
+        $this->assertEquals($code, $ticket->code);
     }
 
 

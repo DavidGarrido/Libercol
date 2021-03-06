@@ -25,6 +25,11 @@ class Point extends Model
         'id' => 'integer',
         'company_id' => 'integer',
     ];
+    public function getRouteKeyName()
+    {
+        // return $this->getKeyName();
+        return 'slug';
+    }
 
 
     public function inventaries()

@@ -61,15 +61,18 @@ class MunicipalityControllerTest extends TestCase
     public function store_saves_and_redirects()
     {
         $name = $this->faker->name;
+        $slug = $this->faker->slug;
         $departament = Departament::factory()->create();
 
         $response = $this->post(route('municipality.store'), [
             'name' => $name,
+            'slug' => $slug,
             'departament_id' => $departament->id,
         ]);
 
         $municipalities = Municipality::query()
             ->where('name', $name)
+            ->where('slug', $slug)
             ->where('departament_id', $departament->id)
             ->get();
         $this->assertCount(1, $municipalities);
@@ -129,10 +132,12 @@ class MunicipalityControllerTest extends TestCase
     {
         $municipality = Municipality::factory()->create();
         $name = $this->faker->name;
+        $slug = $this->faker->slug;
         $departament = Departament::factory()->create();
 
         $response = $this->put(route('municipality.update', $municipality), [
             'name' => $name,
+            'slug' => $slug,
             'departament_id' => $departament->id,
         ]);
 
@@ -142,6 +147,7 @@ class MunicipalityControllerTest extends TestCase
         $response->assertSessionHas('municipality.id', $municipality->id);
 
         $this->assertEquals($name, $municipality->name);
+        $this->assertEquals($slug, $municipality->slug);
         $this->assertEquals($departament->id, $municipality->departament_id);
     }
 

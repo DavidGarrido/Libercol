@@ -20,6 +20,7 @@ class CreatePointsTable extends Migration
             $table->foreignId('company_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->enum('type', ["oficina","bodega","almacen","principal"]);
             $table->string('comment')->nullable();
+            $table->string('slug');
             $table->timestamps();
         });
 

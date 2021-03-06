@@ -27,6 +27,7 @@ class PointFactory extends Factory
             'company_id' => Company::factory(),
             'type' => $this->faker->randomElement(["oficina","bodega","almacen","principal"]),
             'comment' => $this->faker->word,
+            'slug' => $this->faker->slug,
         ];
     }
 }

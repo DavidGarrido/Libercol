@@ -25,6 +25,7 @@ class MunicipalityFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'slug' => $this->faker->slug,
             'departament_id' => Departament::factory(),
         ];
     }

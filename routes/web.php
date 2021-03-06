@@ -47,8 +47,10 @@ Route::group(['middleware' => ['auth:sanctum','verified']], function() {
         return Inertia::render('Dashboard');
     })->name('dashboard');
     
-    
-    Route::resource('company', CompanyController::class)->names('companies');    
+    Route::get('/company', [CompanyController::class, 'index'])->name('companie');
+    Route::get('/company/create', [CompanyController::class, 'create'])->name('companies.create');
+    Route::post('/company', [CompanyController::class, 'store'])->name('companies.store');
+    Route::resource('{rol}/company', CompanyController::class)->except(['index','create','store'])->names('companies');    
     Route::resource('wallet', WalletController::class)->names('wallets');    
     Route::resource('color', ColorController::class)->names('colors');    
     Route::resource('material', MaterialController::class)->names('materials');    

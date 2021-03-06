@@ -61,15 +61,18 @@ class ClientControllerTest extends TestCase
     public function store_saves_and_redirects()
     {
         $name = $this->faker->name;
+        $code = $this->faker->word;
         $company = Company::factory()->create();
 
         $response = $this->post(route('client.store'), [
             'name' => $name,
+            'code' => $code,
             'company_id' => $company->id,
         ]);
 
         $clients = Client::query()
             ->where('name', $name)
+            ->where('code', $code)
             ->where('company_id', $company->id)
             ->get();
         $this->assertCount(1, $clients);
@@ -129,10 +132,12 @@ class ClientControllerTest extends TestCase
     {
         $client = Client::factory()->create();
         $name = $this->faker->name;
+        $code = $this->faker->word;
         $company = Company::factory()->create();
 
         $response = $this->put(route('client.update', $client), [
             'name' => $name,
+            'code' => $code,
             'company_id' => $company->id,
         ]);
 
@@ -142,6 +147,7 @@ class ClientControllerTest extends TestCase
         $response->assertSessionHas('client.id', $client->id);
 
         $this->assertEquals($name, $client->name);
+        $this->assertEquals($code, $client->code);
         $this->assertEquals($company->id, $client->company_id);
     }
 

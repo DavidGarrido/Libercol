@@ -17,6 +17,7 @@ class CreateCompaniesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('color');
+            $table->string('slug');
             $table->timestamps();
         });
     }

@@ -62,15 +62,18 @@ class PointControllerTest extends TestCase
     {
         $company = Company::factory()->create();
         $type = $this->faker->randomElement(/** enum_attributes **/);
+        $slug = $this->faker->slug;
 
         $response = $this->post(route('point.store'), [
             'company_id' => $company->id,
             'type' => $type,
+            'slug' => $slug,
         ]);
 
         $points = Point::query()
             ->where('company_id', $company->id)
             ->where('type', $type)
+            ->where('slug', $slug)
             ->get();
         $this->assertCount(1, $points);
         $point = $points->first();
@@ -130,10 +133,12 @@ class PointControllerTest extends TestCase
         $point = Point::factory()->create();
         $company = Company::factory()->create();
         $type = $this->faker->randomElement(/** enum_attributes **/);
+        $slug = $this->faker->slug;
 
         $response = $this->put(route('point.update', $point), [
             'company_id' => $company->id,
             'type' => $type,
+            'slug' => $slug,
         ]);
 
         $point->refresh();
@@ -143,6 +148,7 @@ class PointControllerTest extends TestCase
 
         $this->assertEquals($company->id, $point->company_id);
         $this->assertEquals($type, $point->type);
+        $this->assertEquals($slug, $point->slug);
     }
 
 

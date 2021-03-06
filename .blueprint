@@ -164,7 +164,7 @@ models:
     ListaPrecio: { carateristica_id: id }
     Caracteristica: { referencia: 'string nullable', peso_kl: 'decimal:10,1 nullable', talla: 'string:2 nullable', ancho: 'integer nullable', alto: 'integer nullable', textura: 'string nullable', cantidad: 'default:1', bien_id: id, color_id: id, material_id: id }
     Categoria: { nombre: string }
-    Color: { name: 'string nullable', type: 'enum:rgba,rgb,hex', code: 'string nullable', relationships: { hasMany: Feature } }
+    Color: { name: 'string nullable', slug: string, type: 'enum:rgba,rgb,hex', code: 'string nullable', relationships: { hasMany: Feature } }
     Material: { name: string, slug: string, relationships: { hasMany: Feature } }
     Producto: { nombre: string, descripcion: text }
     Extra: { concept: string, value: 'integer nullable', percent: 'integer nullable', type: 'enum:inc,dec', ticket_id: id }
@@ -176,27 +176,27 @@ models:
     Score: { sales: unsignedInteger, profit: unsignedBigInteger, starts: unsignedInteger, client_id: id }
     Municipio: { nombre: string, departamento_id: id }
     Departamento: { nombre: string }
-    Company: { name: string, color: string, relationships: { hasMany: 'Fiscal, Point, Client' } }
+    Company: { name: string, color: string, slug: string, relationships: { hasMany: 'Fiscal, Point, Client' } }
     Industry: { name: string, relationships: { hasMany: Fiscal } }
     Tax: { name: string, percent: 'integer nullable', value: 'bigInteger nullable', relationships: { belongsToMany: Fiscal } }
     Contact: { tel: 'bigInteger nullable', cel_one: 'bigInteger nullable', cel_two: 'bigInteger nullable', whatsapp: 'bigInteger nullable', telegram: 'bigInteger nullable', facebook: 'string nullable', instagram: 'string nullable', twitter: 'string nullable', linkedin: 'string nullable', email: 'string nullable', web: 'string nullable', address_id: 'id nullable', modeltable_type: string, modeltable_id: unsignedBigInteger }
     Address: { description_id: string, municipality_id: id, relationships: { hasMany: Contact } }
     File: { format: 'enum:image,doc,pdf,url', type: 'enum:transaccion,perfil,producto,rut,cedula,camara,ref_comercial,ref_personal,ref_bancaria,cer_libertad,balance,tarjeta_profesional,extecto,nit', route: string, comment: 'text nullable', modeltable_type: string, modeltable_id: unsignedBigInteger }
-    Point: { company_id: id, type: 'enum:oficina,bodega,almacen,principal', comment: nullable, relationships: { hasMany: 'Inventary, Ticket' } }
+    Point: { company_id: id, type: 'enum:oficina,bodega,almacen,principal', comment: nullable, slug: string, relationships: { hasMany: 'Inventary, Ticket' } }
     Inventary: { point_id: id, asset_id: id }
-    Ticket: { total: bigInteger, utc: bigInteger, point_id: id, creator_id: 'id foreign:users', vendor_id: 'id foreign:users', relationships: { hasMany: Extra } }
-    Asset: { name: string, description: text, creator_id: 'id foreign:users', valoration: bigInteger, relationships: { hasMany: 'Inventary, Feature', belongsToMany: Category } }
+    Ticket: { total: bigInteger, utc: bigInteger, point_id: id, creator_id: 'id foreign:users', vendor_id: 'id foreign:users', code: string, relationships: { hasMany: Extra } }
+    Asset: { name: string, slug: string, description: text, creator_id: 'id foreign:users', valoration: bigInteger, relationships: { hasMany: 'Inventary, Feature', belongsToMany: Category } }
     Listsale: { feature_id: id, value: bigInteger, state: 'enum:activo,inactivo', utc_start: 'bigInteger nullable', utc_end: 'bigInteger nullable', relationships: { hasMany: Product } }
     Feature: { reference: 'string nullable', weight: 'decimal:10,1 nullable', size: 'string nullable', width: 'integer nullable', height: 'integer nullable', texture: 'string nullable', units: 'default:1', max: 'integer nullable', min: 'integer default:1', asset_id: id, color_id: id, material_id: id, relationships: { hasMany: Listsale } }
     Product: { name: string, feature: text, units: integer, listsale_id: id }
-    Wallet: { modeltable_type: string, modeltable_id: unsignedBigInteger, wallettype_id: id, relationships: { hasMany: Walletmoviment } }
+    Wallet: { code: string, modeltable_type: string, modeltable_id: unsignedBigInteger, wallettype_id: id, relationships: { hasMany: Walletmoviment } }
     Wallettype: { type: 'enum:efectivo,ahorros,daviplata,nequi,movi,ticket,credito', bank_id: 'id nullable', limit: 'bigInteger nullable', relationships: { hasMany: Wallet } }
     Walletmoviment: { value: bigInteger, interest: bigInteger, utc_start: 'bigInteger nullable', utc_end: 'bigInteger nullable', type: 'enum:inc,dec', state: 'enum:aprobado,desaprobado', wallet_id: id }
-    Bank: { name: string }
+    Bank: { name: string, slug: string }
     Userdata: { stature: 'integer nullable', weight: 'integer nullable', size: string, gender: 'enum:masculino,femenino', type_document: 'enum:cc,ce,ti,rc,pp nullable', number_document: 'bigInteger nullable', modeltable_type: 'string nullable', modeltable_id: 'unsignedBigInteger nullable' }
-    Client: { name: string, company_id: id, relationships: { hasMany: Score } }
-    Municipality: { name: string, departament_id: id, relationships: { hasMany: Address } }
-    Departament: { name: string }
+    Client: { name: string, code: string, company_id: id, relationships: { hasMany: Score } }
+    Municipality: { name: string, slug: string, departament_id: id, relationships: { hasMany: Address } }
+    Departament: { name: string, slug: string }
     Category: { name: string, slug: string, relationships: { belongsToMany: Asset } }
     Role: { name: string, slug: string, code: 'string unique', relationships: { belongsToMany: Permission } }
     Permission: { name: string, slug: string, relationships: { belongsToMany: Role } }

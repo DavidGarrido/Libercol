@@ -59,13 +59,16 @@ class ColorControllerTest extends TestCase
      */
     public function store_saves_and_redirects()
     {
+        $slug = $this->faker->slug;
         $type = $this->faker->randomElement(/** enum_attributes **/);
 
         $response = $this->post(route('color.store'), [
+            'slug' => $slug,
             'type' => $type,
         ]);
 
         $colors = Color::query()
+            ->where('slug', $slug)
             ->where('type', $type)
             ->get();
         $this->assertCount(1, $colors);
@@ -124,9 +127,11 @@ class ColorControllerTest extends TestCase
     public function update_redirects()
     {
         $color = Color::factory()->create();
+        $slug = $this->faker->slug;
         $type = $this->faker->randomElement(/** enum_attributes **/);
 
         $response = $this->put(route('color.update', $color), [
+            'slug' => $slug,
             'type' => $type,
         ]);
 
@@ -135,6 +140,7 @@ class ColorControllerTest extends TestCase
         $response->assertRedirect(route('color.index'));
         $response->assertSessionHas('color.id', $color->id);
 
+        $this->assertEquals($slug, $color->slug);
         $this->assertEquals($type, $color->type);
     }
 

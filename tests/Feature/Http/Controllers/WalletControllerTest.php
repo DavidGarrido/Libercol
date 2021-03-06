@@ -60,17 +60,20 @@ class WalletControllerTest extends TestCase
      */
     public function store_saves_and_redirects()
     {
+        $code = $this->faker->word;
         $modeltable_type = $this->faker->word;
         $modeltable_id = $this->faker->randomNumber();
         $wallettype = Wallettype::factory()->create();
 
         $response = $this->post(route('wallet.store'), [
+            'code' => $code,
             'modeltable_type' => $modeltable_type,
             'modeltable_id' => $modeltable_id,
             'wallettype_id' => $wallettype->id,
         ]);
 
         $wallets = Wallet::query()
+            ->where('code', $code)
             ->where('modeltable_type', $modeltable_type)
             ->where('modeltable_id', $modeltable_id)
             ->where('wallettype_id', $wallettype->id)
@@ -131,11 +134,13 @@ class WalletControllerTest extends TestCase
     public function update_redirects()
     {
         $wallet = Wallet::factory()->create();
+        $code = $this->faker->word;
         $modeltable_type = $this->faker->word;
         $modeltable_id = $this->faker->randomNumber();
         $wallettype = Wallettype::factory()->create();
 
         $response = $this->put(route('wallet.update', $wallet), [
+            'code' => $code,
             'modeltable_type' => $modeltable_type,
             'modeltable_id' => $modeltable_id,
             'wallettype_id' => $wallettype->id,
@@ -146,6 +151,7 @@ class WalletControllerTest extends TestCase
         $response->assertRedirect(route('wallet.index'));
         $response->assertSessionHas('wallet.id', $wallet->id);
 
+        $this->assertEquals($code, $wallet->code);
         $this->assertEquals($modeltable_type, $wallet->modeltable_type);
         $this->assertEquals($modeltable_id, $wallet->modeltable_id);
         $this->assertEquals($wallettype->id, $wallet->wallettype_id);

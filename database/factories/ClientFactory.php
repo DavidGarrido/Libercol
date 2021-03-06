@@ -25,6 +25,7 @@ class ClientFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'code' => $this->faker->word,
             'company_id' => Company::factory(),
         ];
     }

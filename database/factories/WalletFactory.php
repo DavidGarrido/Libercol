@@ -24,6 +24,7 @@ class WalletFactory extends Factory
     public function definition()
     {
         return [
+            'code' => $this->faker->word,
             'modeltable_type' => $this->faker->word,
             'modeltable_id' => $this->faker->randomNumber(),
             'wallettype_id' => Wallettype::factory(),

@@ -25,6 +25,7 @@ class AssetFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'slug' => $this->faker->slug,
             'description' => $this->faker->text,
             'creator_id' => User::factory(),
             'valoration' => $this->faker->numberBetween(-100000, 100000),

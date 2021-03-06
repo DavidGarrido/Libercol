@@ -22,9 +22,11 @@ class CompanyFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->name;
         return [
-            'name' => $this->faker->name,
+            'name' => $name,
             'color' => $this->faker->word,
+            'slug' => strtolower(str_replace(' ', '-', str_replace('.', '', $name))),
         ];
     }
 }

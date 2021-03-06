@@ -24,6 +24,7 @@ class ColorFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'slug' => $this->faker->slug,
             'type' => $this->faker->randomElement(["rgba","rgb","hex"]),
             'code' => $this->faker->word,
         ];

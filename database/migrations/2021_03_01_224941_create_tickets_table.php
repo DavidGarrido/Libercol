@@ -22,6 +22,7 @@ class CreateTicketsTable extends Migration
             $table->foreignId('point_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('creator_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('vendor_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('code');
             $table->timestamps();
         });
 

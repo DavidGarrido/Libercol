@@ -61,12 +61,14 @@ class AssetControllerTest extends TestCase
     public function store_saves_and_redirects()
     {
         $name = $this->faker->name;
+        $slug = $this->faker->slug;
         $description = $this->faker->text;
         $creator = Creator::factory()->create();
         $valoration = $this->faker->numberBetween(-100000, 100000);
 
         $response = $this->post(route('asset.store'), [
             'name' => $name,
+            'slug' => $slug,
             'description' => $description,
             'creator_id' => $creator->id,
             'valoration' => $valoration,
@@ -74,6 +76,7 @@ class AssetControllerTest extends TestCase
 
         $assets = Asset::query()
             ->where('name', $name)
+            ->where('slug', $slug)
             ->where('description', $description)
             ->where('creator_id', $creator->id)
             ->where('valoration', $valoration)
@@ -135,12 +138,14 @@ class AssetControllerTest extends TestCase
     {
         $asset = Asset::factory()->create();
         $name = $this->faker->name;
+        $slug = $this->faker->slug;
         $description = $this->faker->text;
         $creator = Creator::factory()->create();
         $valoration = $this->faker->numberBetween(-100000, 100000);
 
         $response = $this->put(route('asset.update', $asset), [
             'name' => $name,
+            'slug' => $slug,
             'description' => $description,
             'creator_id' => $creator->id,
             'valoration' => $valoration,
@@ -152,6 +157,7 @@ class AssetControllerTest extends TestCase
         $response->assertSessionHas('asset.id', $asset->id);
 
         $this->assertEquals($name, $asset->name);
+        $this->assertEquals($slug, $asset->slug);
         $this->assertEquals($description, $asset->description);
         $this->assertEquals($creator->id, $asset->creator_id);
         $this->assertEquals($valoration, $asset->valoration);

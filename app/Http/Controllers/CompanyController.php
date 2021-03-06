@@ -21,15 +21,9 @@ class CompanyController extends Controller
     public function index(Request $request)
     {
         // return view('company.index', compact('companies'));
+
         return Inertia::render('company/index',[
-            'companies' => Company::all()->map(function ($company) {
-                return [
-                    'id' => $company->id,
-                    'name' => $company->name,
-                    'color' => $company->color
-                ];
-            }),
-            'create_url' => URL::route('companies.create'),
+            'roles' => auth()->user()->roles()->with('companies')->get()
         ]);
     }
 
@@ -49,14 +43,23 @@ class CompanyController extends Controller
      */
     public function store(CompanyStoreRequest $request)
     {
-        $company = Company::create($request->validated());
+        $request->validated();
+        $company = Company::create([
+            'name' => $request->name,
+            'color' => $request->color,
+            'slug' => strtolower(str_replace(' ', '-', str_replace('.', '', $request->name))),
+        ]);
 
-
+        //generamos codigo unico para el rol
         $code = Str::random(10);
+
+        //createmos el slug para el rol
+        $slug_role = 'superadmin-'.$company->name.'-'.strtolower($code);
 
         $role = Role::create([
             'name' => 'SuperAdmin',
-            'slug' => 'superadmin-'.$company->name.'-'.strtolower($code),
+            //quitamos espacios y puntos el el slug
+            'slug' => strtolower(str_replace(' ', '-', str_replace('.', '', $slug_role))),
             'code' => $code
         ]);
 
@@ -73,13 +76,12 @@ class CompanyController extends Controller
      * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Company $company)
+    public function show(Request $request, Role $rol, Company $company )
     {
         // return view('company.show', compact('company'));
         return Inertia::render('company/show',[
             'companie' => $company,
-            'edit' => URL::route('companies.edit', $company),
-            'all' => URL::route('companies.index')
+            'role' => $rol
         ]);
     }
 
@@ -88,11 +90,12 @@ class CompanyController extends Controller
      * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Company $company)
+    public function edit(Request $request, Role $rol, Company $company)
     {
         // return view('company.edit', compact('company'));
         return Inertia::render('company/edit',[
-            'companie' => $company
+            'companie' => $company,
+            'role' => $rol
         ]);
     }
 
@@ -101,14 +104,14 @@ class CompanyController extends Controller
      * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function update(CompanyUpdateRequest $request, Company $company)
+    public function update(CompanyUpdateRequest $request, Role $rol, Company $company)
     {
         $company->update($request->validated());
 
         // $request->session()->flash('company.id', $company->id);
 
         // return redirect()->route('companies.show', $company);
-        return Redirect::route('companies.show', $company)->with('success', 'Organization updated.');
+        return Redirect::route('companies.show', [$rol, $company])->with('success', 'Organization updated.');
         // return Redirect::route('companies.show', $company);
     }
 
@@ -117,11 +120,14 @@ class CompanyController extends Controller
      * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Company $company)
+    public function destroy(Request $request, Role $rol, Company $company)
     {
+        foreach($company->roles as $role){
+            $role->delete();
+        }
         $company->delete();
 
         // return redirect()->route('company.index');
-        return Redirect::route('companies.index')->with('success', 'Empresa Eliminada');
+        return Redirect::route('companie')->with('success', 'Empresa Eliminada');
     }
 }

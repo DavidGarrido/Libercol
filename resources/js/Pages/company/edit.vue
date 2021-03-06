@@ -9,7 +9,7 @@
                         <p>Color</p>
                         <input type="color" v-model="form.color">
                         <div class="flex justify-end items-center gap-3 w-full">
-                            <inertia-link :href="route('companies.index')" class="text-gray-400 underline text-sm">Cancelar</inertia-link>
+                            <inertia-link :href="route('companie')" class="text-gray-400 underline text-sm">Cancelar</inertia-link>
                             <button type="submit" class="bg-gray-200 text-gray-500 p-3 rounded-lg">Guardar</button>
                         </div>
                     </form>
@@ -27,7 +27,8 @@
             AppLayout,
         },
         props: {
-            'companie': Object
+            companie: Object,
+            role: Object
         },
         remember: 'form',
         data () {
@@ -40,7 +41,7 @@
         },
         methods: {
             update(){
-                this.form.put(this.route('companies.update', this.companie.id))
+                this.form.put(this.route('companies.update', [this.role.slug, this.companie.slug]))
             }
         }
     }
