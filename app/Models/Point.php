@@ -52,4 +52,9 @@ class Point extends Model
     {
         return $this->morphToMany(\App\Models\Role::class, 'rolegable');
     }
+
+    public function contact()
+    {
+        return $this->morphMany(Contact::class, 'modeltable');
+    }
 }

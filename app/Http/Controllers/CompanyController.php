@@ -76,12 +76,12 @@ class CompanyController extends Controller
      * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Role $rol, Company $company )
+    public function show(Request $request, Role $role, Company $company )
     {
         // return view('company.show', compact('company'));
         return Inertia::render('company/show',[
             'companie' => $company,
-            'role' => $rol
+            'role' => $role
         ]);
     }
 
@@ -90,12 +90,12 @@ class CompanyController extends Controller
      * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Role $rol, Company $company)
+    public function edit(Request $request, Role $role, Company $company)
     {
         // return view('company.edit', compact('company'));
         return Inertia::render('company/edit',[
             'companie' => $company,
-            'role' => $rol
+            'role' => $role
         ]);
     }
 
@@ -104,14 +104,14 @@ class CompanyController extends Controller
      * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function update(CompanyUpdateRequest $request, Role $rol, Company $company)
+    public function update(CompanyUpdateRequest $request, Role $role, Company $company)
     {
         $company->update($request->validated());
 
         // $request->session()->flash('company.id', $company->id);
 
         // return redirect()->route('companies.show', $company);
-        return Redirect::route('companies.show', [$rol, $company])->with('success', 'Organization updated.');
+        return Redirect::route('companies.show', [$role, $company])->with('success', 'Organization updated.');
         // return Redirect::route('companies.show', $company);
     }
 
@@ -120,10 +120,10 @@ class CompanyController extends Controller
      * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Role $rol, Company $company)
+    public function destroy(Request $request, Role $role, Company $company)
     {
-        foreach($company->roles as $role){
-            $role->delete();
+        foreach($company->roles as $rol){
+            $rol->delete();
         }
         $company->delete();
 

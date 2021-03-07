@@ -50,17 +50,17 @@ Route::group(['middleware' => ['auth:sanctum','verified']], function() {
     Route::get('/company', [CompanyController::class, 'index'])->name('companie');
     Route::get('/company/create', [CompanyController::class, 'create'])->name('companies.create');
     Route::post('/company', [CompanyController::class, 'store'])->name('companies.store');
-    Route::resource('{rol}/company', CompanyController::class)->except(['index','create','store'])->names('companies');    
+    Route::resource('{role}/company', CompanyController::class)->except(['index','create','store'])->names('companies');    
     Route::resource('wallet', WalletController::class)->names('wallets');    
     Route::resource('color', ColorController::class)->names('colors');    
     Route::resource('material', MaterialController::class)->names('materials');    
     Route::resource('municipality', MunicipalityController::class)->names('municipalities');    
     Route::resource('departament', DepartamentController::class)->names('departaments');    
     
-    Route::resource('{rol}/ticket', TicketController::class)->names('tickets');    
-    Route::resource('{rol}/inventary', InventaryController::class)->names('inventaries');    
-    Route::resource('{rol}/asset', AssetController::class)->names('assets');    
-    Route::resource('{rol}/client', ClientController::class)->names('clients');    
-    Route::resource('{rol}/point', PointController::class)->names('points');    
-    Route::resource('{rol}/category', CategoryController::class)->names('categories');
+    Route::resource('{role}/ticket', TicketController::class)->names('tickets');    
+    Route::resource('{role}/inventary', InventaryController::class)->names('inventaries');    
+    Route::resource('{role}/asset', AssetController::class)->names('assets');    
+    Route::resource('{role}/client', ClientController::class)->names('clients');    
+    Route::resource('{role}/point', PointController::class)->names('points');    
+    Route::resource('{role}/category', CategoryController::class)->names('categories');
 });

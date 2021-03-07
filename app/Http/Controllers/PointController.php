@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PointStoreRequest;
 use App\Http\Requests\PointUpdateRequest;
+use App\Models\Contact;
 use App\Models\Point;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -16,9 +17,9 @@ class PointController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Role $rol)
+    public function index(Request $request, Role $role)
     {
-        $points = $rol->points;
+        $points = $role->points;
 
 
         // return view('point.index', compact('points'));
@@ -28,11 +29,11 @@ class PointController extends Controller
             // si hay puntos imprime la lista
             return Inertia::render('point/index',[
                 'points' => $points,
-                'role' => $rol
+                'role' => $role
             ]);
         // }else{
             //si no hay puntos re-dirige a create
-            return redirect()->route('points.create',$rol);
+            return redirect()->route('points.create',$role);
         // }
     }
 
@@ -40,13 +41,13 @@ class PointController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, Role $rol)
+    public function create(Request $request, Role $role)
     {
         // dd($rol);
         return Inertia::render('point/create',[
-            'role' => $rol,
-            'companie' => $rol->companies()->first(),
-            'points' => $rol->companies()->first()->points
+            'role' => $role,
+            'companie' => $role->companies()->first(),
+            'points' => $role->companies()->first()->points
         ]);
     }
 
@@ -55,22 +56,27 @@ class PointController extends Controller
      * @return \Illuminate\Http\Response
      */
     // public function store(PointStoreRequest $request, Role $rol)
-    public function store(Request $request, Role $rol)
+    public function store(Request $request, Role $role)
     {
+        dd($request);
         $code = Str::random(10);
 
         $point = Point::create([
-            'company_id' => $rol->companies()->first()->id,
+            'company_id' => $role->companies()->first()->id,
             'type' => $request->type,
             'comment' => $request->comment,
             'slug' => strtolower($code)
         ]);
+        $contact = Contact::create([
+            'modeltable_type' => 'App\Models\Point',
+            'modeltable_id' => $point->id
+        ]);
 
-        $rol->points()->attach($point);
+        $role->points()->attach($point);
 
         // $request->session()->flash('point.id', $point->id);
 
-        return redirect()->route('points.index', $rol);
+        return redirect()->route('points.index', $role);
     }
 
     /**
@@ -78,9 +84,13 @@ class PointController extends Controller
      * @param \App\Models\Point $point
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Point $point)
+    public function show(Request $request, Role $role, Point $point)
     {
-        return view('point.show', compact('point'));
+        return Inertia::render('point/show', [
+            'point' => $point,
+            'role' => $role,
+            'contact' => $point->contact()->with('address')->first()
+        ]);
     }
 
     /**

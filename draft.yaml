@@ -180,13 +180,14 @@ models:
 # Address: Para relacionarlo con las direccioens
     name: string
     slug: string
+    code: integer
     departament_id: id
     relationships:
       hasMany: Address
 # Name: El nombre de los departamentos que existen
   Departament:
     name: string
-    slug: string
+    code: integer
   Category:
     name: string
     slug: string

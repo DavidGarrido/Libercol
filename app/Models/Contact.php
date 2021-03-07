@@ -37,4 +37,8 @@ class Contact extends Model
     {
         return $this->belongsTo(\App\Models\Address::class);
     }
+    public function modeltable()
+    {
+        return $this->morphTo();
+    }
 }
