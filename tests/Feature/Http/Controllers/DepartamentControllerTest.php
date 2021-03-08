@@ -60,16 +60,16 @@ class DepartamentControllerTest extends TestCase
     public function store_saves_and_redirects()
     {
         $name = $this->faker->name;
-        $slug = $this->faker->slug;
+        $code = $this->faker->numberBetween(-10000, 10000);
 
         $response = $this->post(route('departament.store'), [
             'name' => $name,
-            'slug' => $slug,
+            'code' => $code,
         ]);
 
         $departaments = Departament::query()
             ->where('name', $name)
-            ->where('slug', $slug)
+            ->where('code', $code)
             ->get();
         $this->assertCount(1, $departaments);
         $departament = $departaments->first();
@@ -128,11 +128,11 @@ class DepartamentControllerTest extends TestCase
     {
         $departament = Departament::factory()->create();
         $name = $this->faker->name;
-        $slug = $this->faker->slug;
+        $code = $this->faker->numberBetween(-10000, 10000);
 
         $response = $this->put(route('departament.update', $departament), [
             'name' => $name,
-            'slug' => $slug,
+            'code' => $code,
         ]);
 
         $departament->refresh();
@@ -141,7 +141,7 @@ class DepartamentControllerTest extends TestCase
         $response->assertSessionHas('departament.id', $departament->id);
 
         $this->assertEquals($name, $departament->name);
-        $this->assertEquals($slug, $departament->slug);
+        $this->assertEquals($code, $departament->code);
     }
 
 

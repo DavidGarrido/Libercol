@@ -62,17 +62,20 @@ class MunicipalityControllerTest extends TestCase
     {
         $name = $this->faker->name;
         $slug = $this->faker->slug;
+        $code = $this->faker->numberBetween(-10000, 10000);
         $departament = Departament::factory()->create();
 
         $response = $this->post(route('municipality.store'), [
             'name' => $name,
             'slug' => $slug,
+            'code' => $code,
             'departament_id' => $departament->id,
         ]);
 
         $municipalities = Municipality::query()
             ->where('name', $name)
             ->where('slug', $slug)
+            ->where('code', $code)
             ->where('departament_id', $departament->id)
             ->get();
         $this->assertCount(1, $municipalities);
@@ -133,11 +136,13 @@ class MunicipalityControllerTest extends TestCase
         $municipality = Municipality::factory()->create();
         $name = $this->faker->name;
         $slug = $this->faker->slug;
+        $code = $this->faker->numberBetween(-10000, 10000);
         $departament = Departament::factory()->create();
 
         $response = $this->put(route('municipality.update', $municipality), [
             'name' => $name,
             'slug' => $slug,
+            'code' => $code,
             'departament_id' => $departament->id,
         ]);
 
@@ -148,6 +153,7 @@ class MunicipalityControllerTest extends TestCase
 
         $this->assertEquals($name, $municipality->name);
         $this->assertEquals($slug, $municipality->slug);
+        $this->assertEquals($code, $municipality->code);
         $this->assertEquals($departament->id, $municipality->departament_id);
     }
 

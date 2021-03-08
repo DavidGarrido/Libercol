@@ -3,7 +3,16 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-3">
-                    <p class="text-3xl font-bold text-gray-600">{{point.type}}</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-3xl font-bold text-gray-600">{{point.type}}</p>
+                            <p class="mb-5">{{point.comment}}</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <inertia-link :href="route('points.edit',[role,point])">Editar</inertia-link>
+                            <button @click="destroy">Eliminar</button>
+                        </div>
+                    </div>
                     <p>Teléfono: 
                         <span v-if="contact.tel == null" class="italic text-gray-400">Ninguno</span> 
                         <span v-else>{{contact.tel}}</span> 
@@ -48,6 +57,10 @@
                         <span v-if="contact.web == null" class="italic text-gray-400">Ninguno</span> 
                         <span v-else>{{contact.web}}</span> 
                     </p>
+                    <p>Dirección: 
+                        <span v-if="contact.address.description_id == null" class="italic text-gray-400">Ninguno</span> 
+                        <span v-else>{{contact.address.description_id}}</span> 
+                    </p>
                 </div>
             </div>
         </div>
@@ -64,7 +77,14 @@
         props: {
             point: Object,
             role: Object,
-            contact: Array
+            contact: Object
+        },
+        methods :{
+            destroy () {
+                if (confirm('Vas a eliminar este punto. ¿Deseas continuar?')) {
+                    this.$inertia.delete(this.route('points.destroy',[this.role, this.point]))                    
+                }
+            }
         }
     }
 </script>

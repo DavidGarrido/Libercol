@@ -195,8 +195,8 @@ models:
     Bank: { name: string, slug: string }
     Userdata: { stature: 'integer nullable', weight: 'integer nullable', size: string, gender: 'enum:masculino,femenino', type_document: 'enum:cc,ce,ti,rc,pp nullable', number_document: 'bigInteger nullable', modeltable_type: 'string nullable', modeltable_id: 'unsignedBigInteger nullable' }
     Client: { name: string, code: string, company_id: id, relationships: { hasMany: Score } }
-    Municipality: { name: string, slug: string, departament_id: id, relationships: { hasMany: Address } }
-    Departament: { name: string, slug: string }
+    Municipality: { name: string, slug: string, code: integer, departament_id: id, relationships: { hasMany: Address } }
+    Departament: { name: string, code: integer }
     Category: { name: string, slug: string, relationships: { belongsToMany: Asset } }
     Role: { name: string, slug: string, code: 'string unique', relationships: { belongsToMany: Permission } }
     Permission: { name: string, slug: string, relationships: { belongsToMany: Role } }

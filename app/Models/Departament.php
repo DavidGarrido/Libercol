@@ -24,4 +24,10 @@ class Departament extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+    
+    public function municipalities()
+    {
+        return $this->hasMany(Municipality::class);
+    }
+    
 }

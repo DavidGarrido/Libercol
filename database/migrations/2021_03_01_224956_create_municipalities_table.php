@@ -19,6 +19,7 @@ class CreateMunicipalitiesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->integer('code');
             $table->foreignId('departament_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

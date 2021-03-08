@@ -59,12 +59,21 @@
                             <p class="w-2/12">Web:</p>
                             <input type="text" v-model="form.web" class="flex-1">
                         </div>
+                        <div class="flex justify-between w-1/2 gap-3">
+                            <p class="w-2/12">* Dirección:</p>
+                            <input type="text" v-model="form.address" class="flex-1">
+                        </div>
+                        <select v-model="form.departament" @change="mun">
+                            <option v-for="dep in departaments" :value="dep.id">{{dep.name}}</option>
+                        </select>
+                        <select v-model="form.mun">
+                            <option v-for="municipality in municipalities" :value="municipality.id">{{municipality.name}}</option>
+                        </select>
                         <p>Comentario <span class="text-gray-500 text-sm italic">* opcional</span></p>
                         <textarea v-model="form.comment" cols="30" rows="10"></textarea>
                         <div class="w-full flex justify-end">
                             <button type="submit" class="bg-gray-500 text-white rounded-lg p-3">Crear</button>
                         </div>
-                        <input type="hidden" v-model="form.slug">
                     </form>
                 </div>
             </div>
@@ -82,7 +91,8 @@
         props: {
             companie: Object,
             role: Object,
-            points: Array
+            points: Array,
+            departaments: Array
         },
         data() {
             return {
@@ -99,13 +109,30 @@
                     twitter: null,
                     linkedin: null,
                     email: null,
-                    web: null
-                })
+                    web: null,
+                    departament: 3,
+                    mun: null,
+                    address: null
+                }),
+                municipalities: Array
             }
+        },
+        mounted (){
+            this.mun()
         },
         methods: {
             store () {
                 this.form.post(this.route('points.store', this.role.slug))
+            },
+            mun () {
+                axios.get(this.route('api.mun', this.form.departament))
+                     .then(
+                         response => {
+                             this.municipalities = response.data
+                             this.form.mun = this.municipalities[0].id
+                         }
+                     )
+                     .catch(err => console.error(err)) 
             }
         }
     }

@@ -24,7 +24,7 @@ class DepartamentFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'slug' => $this->faker->slug,
+            'code' => $this->faker->numberBetween(-10000, 10000),
         ];
     }
 }
