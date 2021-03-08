@@ -111,7 +111,7 @@ class CompanyController extends Controller
         // $request->session()->flash('company.id', $company->id);
 
         // return redirect()->route('companies.show', $company);
-        return Redirect::route('companies.show', [$role, $company])->with('success', 'Organization updated.');
+        return Redirect::route('companies.show', [$role, $company])->with('success', 'Compañia Actualizada.');
         // return Redirect::route('companies.show', $company);
     }
 

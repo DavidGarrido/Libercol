@@ -10,6 +10,7 @@ use App\Models\Departament;
 use App\Models\Point;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Illuminate\Support\Str;
 
@@ -97,7 +98,7 @@ class PointController extends Controller
 
         // $request->session()->flash('point.id', $point->id);
 
-        return redirect()->route('points.index', $role);
+        return Redirect::route('points.index', $role)->with('success', 'Punto creado correctamente.');
     }
 
     /**
@@ -165,7 +166,7 @@ class PointController extends Controller
 
         $request->session()->flash('point.id', $point->id);
 
-        return redirect()->route('points.show',[$role, $point]);
+        return Redirect::route('points.show',[$role, $point])->with('success', 'Se actualizo la informacion del punto.');
     }
 
     /**
@@ -180,6 +181,6 @@ class PointController extends Controller
         $point->delete();
         // $point->delete();
 
-        return redirect()->route('points.index', $role);
+        return Redirect::route('points.index', $role)->with('success', 'Se ha eliminado el punto.');
     }
 }
