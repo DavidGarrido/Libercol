@@ -63,15 +63,21 @@ class InventaryControllerTest extends TestCase
     {
         $point = Point::factory()->create();
         $asset = Asset::factory()->create();
+        $units = $this->faker->word;
+        $min = $this->faker->numberBetween(-10000, 10000);
 
         $response = $this->post(route('inventary.store'), [
             'point_id' => $point->id,
             'asset_id' => $asset->id,
+            'units' => $units,
+            'min' => $min,
         ]);
 
         $inventaries = Inventary::query()
             ->where('point_id', $point->id)
             ->where('asset_id', $asset->id)
+            ->where('units', $units)
+            ->where('min', $min)
             ->get();
         $this->assertCount(1, $inventaries);
         $inventary = $inventaries->first();
@@ -131,10 +137,14 @@ class InventaryControllerTest extends TestCase
         $inventary = Inventary::factory()->create();
         $point = Point::factory()->create();
         $asset = Asset::factory()->create();
+        $units = $this->faker->word;
+        $min = $this->faker->numberBetween(-10000, 10000);
 
         $response = $this->put(route('inventary.update', $inventary), [
             'point_id' => $point->id,
             'asset_id' => $asset->id,
+            'units' => $units,
+            'min' => $min,
         ]);
 
         $inventary->refresh();
@@ -144,6 +154,8 @@ class InventaryControllerTest extends TestCase
 
         $this->assertEquals($point->id, $inventary->point_id);
         $this->assertEquals($asset->id, $inventary->asset_id);
+        $this->assertEquals($units, $inventary->units);
+        $this->assertEquals($min, $inventary->min);
     }
 
 

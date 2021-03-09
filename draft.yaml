@@ -1,10 +1,10 @@
 models:
-  Company:
-    name: string
-    color: string
-    slug: string
-    relationships:
-      hasMany: Fiscal, Point, Client
+  # Company:
+  #   name: string
+  #   color: string
+  #   slug: string
+  #   relationships:
+  #     hasMany: Fiscal, Point, Client
   Industry:
     name: string
     relationships:
@@ -18,26 +18,26 @@ models:
     value: bigInteger nullable
     relationships:
       belongsToMany: Fiscal
-  Contact:
-    tel: bigInteger nullable
-    cel_one: bigInteger nullable
-    cel_two: bigInteger nullable
-    whatsapp: bigInteger nullable
-    telegram: bigInteger nullable
-    facebook: string nullable
-    instagram: string nullable
-    twitter: string nullable
-    linkedin: string nullable
-    email: string nullable
-    web: string nullable
-    address_id: id nullable
-    modeltable_type: string
-    modeltable_id: unsignedBigInteger
-  Address:
-    description_id: string
-    municipality_id: id
-    relationships:
-      hasMany: Contact
+  # Contact:
+  #   tel: bigInteger nullable
+  #   cel_one: bigInteger nullable
+  #   cel_two: bigInteger nullable
+  #   whatsapp: bigInteger nullable
+  #   telegram: bigInteger nullable
+  #   facebook: string nullable
+  #   instagram: string nullable
+  #   twitter: string nullable
+  #   linkedin: string nullable
+  #   email: string nullable
+  #   web: string nullable
+  #   address_id: id nullable
+  #   modeltable_type: string
+  #   modeltable_id: unsignedBigInteger
+  # Address:
+  #   description_id: string
+  #   municipality_id: id
+  #   relationships:
+  #     hasMany: Contact
   File:
     format: enum:image,doc,pdf,url
     type: enum:transaccion,perfil,producto,rut,cedula,camara,ref_comercial,ref_personal,ref_bancaria,cer_libertad,balance,tarjeta_profesional,extecto,nit
@@ -45,16 +45,19 @@ models:
     comment: text nullable
     modeltable_type: string
     modeltable_id: unsignedBigInteger
-  Point:
-    company_id: id
-    type: enum:oficina,bodega,almacen,principal
-    comment: nullable
-    slug: string
-    relationships:
-      hasMany: Inventary, Ticket
+  # Point:
+  #   company_id: id
+  #   type: enum:oficina,bodega,almacen,principal
+  #   comment: nullable
+  #   slug: string
+  #   relationships:
+  #     hasMany: Inventary, Ticket
   Inventary:
     point_id: id
     asset_id: id
+    units: default:1
+    max: integer nullable
+    min: integer default:1
   Ticket:
 # Vendor_id y Creator_id hacen relacion a la tabla usuarios y tomaremos informacion ....
     total: bigInteger
@@ -72,7 +75,7 @@ models:
     creator_id: id foreign:users
     valoration: bigInteger
     relationships:
-      hasMany: Inventary, Feature
+      hasMany: Inventary
       belongsToMany: Category
   Listsale:
     feature_id: id
@@ -89,10 +92,7 @@ models:
     width: integer nullable
     height: integer nullable
     texture: string nullable
-    units: default:1
-    max: integer nullable
-    min: integer default:1
-    asset_id: id
+    inventary_id: id
     color_id: id
     material_id: id
     relationships:
@@ -176,21 +176,21 @@ models:
     profit: unsignedBigInteger
     starts: unsignedInteger
     client_id: id
-  Municipality:
+#   Municipality:
 # Departament_id: Una municipalidad ???? departamentos
 # Address: Para relacionarlo con las direccioens
-    name: string
-    slug: string
-    code: integer
-    departament_id: id
-    relationships:
-      hasMany: Address
+#     name: string
+#     slug: string
+#     code: integer
+#     departament_id: id
+#     relationships:
+#       hasMany: Address
 # Name: El nombre de los departamentos que existen
-  Departament:
-    name: string
-    code: integer
-    relationships:
-      hasMany: Municipality
+  # Departament:
+  #   name: string
+  #   code: integer
+  #   relationships:
+  #     hasMany: Municipality
   Category:
     name: string
     slug: string
@@ -210,8 +210,8 @@ models:
 controllers:
   # Company:
   #   resource
-  Role:
-    resource
+  # Role:
+  #   resource
   Permission:
     resource
   # Point:
@@ -230,10 +230,10 @@ controllers:
     resource
   Client:
     resource
-  Municipality:
-    resource
-  Departament:
-    resource
+  # Municipality:
+  #   resource
+  # Departament:
+  #   resource
   Category:
     resource
-seeders: Company, Industry, Fiscal, Tax, Contact, Address, File, Point, Inventary, Ticket, Asset, Listsale, Feature, Color, Material, Product, Extra, Wallet, Wallettype, Walletmoviment, Bank, Userdata, Client, Score, Category, Role, Permission
+# seeders: Company, Industry, Fiscal, Tax, Contact, Address, File, Point, Inventary, Ticket, Asset, Listsale, Feature, Color, Material, Product, Extra, Wallet, Wallettype, Walletmoviment, Bank, Userdata, Client, Score, Category, Role, Permission

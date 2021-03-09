@@ -24,7 +24,7 @@ class Feature extends Model
     protected $casts = [
         'id' => 'integer',
         'weight' => 'decimal:1',
-        'asset_id' => 'integer',
+        'inventary_id' => 'integer',
         'color_id' => 'integer',
         'material_id' => 'integer',
     ];
@@ -35,9 +35,9 @@ class Feature extends Model
         return $this->hasMany(\App\Models\Listsale::class);
     }
 
-    public function asset()
+    public function inventary()
     {
-        return $this->belongsTo(\App\Models\Asset::class);
+        return $this->belongsTo(\App\Models\Inventary::class);
     }
 
     public function color()

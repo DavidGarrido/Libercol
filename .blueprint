@@ -1,5 +1,4 @@
 created:
-    - app/Http/Controllers/RoleController.php
     - app/Http/Controllers/PermissionController.php
     - app/Http/Controllers/InventaryController.php
     - app/Http/Controllers/TicketController.php
@@ -8,17 +7,11 @@ created:
     - app/Http/Controllers/ColorController.php
     - app/Http/Controllers/MaterialController.php
     - app/Http/Controllers/ClientController.php
-    - app/Http/Controllers/MunicipalityController.php
-    - app/Http/Controllers/DepartamentController.php
     - app/Http/Controllers/CategoryController.php
-    - database/factories/CompanyFactory.php
     - database/factories/IndustryFactory.php
     - database/factories/FiscalFactory.php
     - database/factories/TaxFactory.php
-    - database/factories/ContactFactory.php
-    - database/factories/AddressFactory.php
     - database/factories/FileFactory.php
-    - database/factories/PointFactory.php
     - database/factories/InventaryFactory.php
     - database/factories/TicketFactory.php
     - database/factories/AssetFactory.php
@@ -35,18 +28,12 @@ created:
     - database/factories/UserdataFactory.php
     - database/factories/ClientFactory.php
     - database/factories/ScoreFactory.php
-    - database/factories/MunicipalityFactory.php
-    - database/factories/DepartamentFactory.php
     - database/factories/CategoryFactory.php
     - database/factories/PermissionFactory.php
-    - app/Models/Company.php
     - app/Models/Industry.php
     - app/Models/Fiscal.php
     - app/Models/Tax.php
-    - app/Models/Contact.php
-    - app/Models/Address.php
     - app/Models/File.php
-    - app/Models/Point.php
     - app/Models/Inventary.php
     - app/Models/Ticket.php
     - app/Models/Asset.php
@@ -63,38 +50,8 @@ created:
     - app/Models/Userdata.php
     - app/Models/Client.php
     - app/Models/Score.php
-    - app/Models/Municipality.php
-    - app/Models/Departament.php
     - app/Models/Category.php
     - app/Models/Permission.php
-    - database/seeders/CompanySeeder.php
-    - database/seeders/IndustrySeeder.php
-    - database/seeders/FiscalSeeder.php
-    - database/seeders/TaxSeeder.php
-    - database/seeders/ContactSeeder.php
-    - database/seeders/AddressSeeder.php
-    - database/seeders/FileSeeder.php
-    - database/seeders/PointSeeder.php
-    - database/seeders/InventarySeeder.php
-    - database/seeders/TicketSeeder.php
-    - database/seeders/AssetSeeder.php
-    - database/seeders/ListsaleSeeder.php
-    - database/seeders/FeatureSeeder.php
-    - database/seeders/ColorSeeder.php
-    - database/seeders/MaterialSeeder.php
-    - database/seeders/ProductSeeder.php
-    - database/seeders/ExtraSeeder.php
-    - database/seeders/WalletSeeder.php
-    - database/seeders/WallettypeSeeder.php
-    - database/seeders/WalletmovimentSeeder.php
-    - database/seeders/BankSeeder.php
-    - database/seeders/UserdataSeeder.php
-    - database/seeders/ClientSeeder.php
-    - database/seeders/ScoreSeeder.php
-    - database/seeders/CategorySeeder.php
-    - database/seeders/RoleSeeder.php
-    - database/seeders/PermissionSeeder.php
-    - tests/Feature/Http/Controllers/RoleControllerTest.php
     - tests/Feature/Http/Controllers/PermissionControllerTest.php
     - tests/Feature/Http/Controllers/InventaryControllerTest.php
     - tests/Feature/Http/Controllers/TicketControllerTest.php
@@ -103,18 +60,12 @@ created:
     - tests/Feature/Http/Controllers/ColorControllerTest.php
     - tests/Feature/Http/Controllers/MaterialControllerTest.php
     - tests/Feature/Http/Controllers/ClientControllerTest.php
-    - tests/Feature/Http/Controllers/MunicipalityControllerTest.php
-    - tests/Feature/Http/Controllers/DepartamentControllerTest.php
     - tests/Feature/Http/Controllers/CategoryControllerTest.php
 updated:
-    - database/migrations/2021_03_01_224932_create_companies_table.php
     - database/migrations/2021_03_01_224933_create_industries_table.php
     - database/migrations/2021_03_01_224934_create_fiscals_table.php
     - database/migrations/2021_03_01_224935_create_taxes_table.php
-    - database/migrations/2021_03_01_224936_create_contacts_table.php
-    - database/migrations/2021_03_01_224937_create_addresses_table.php
     - database/migrations/2021_03_01_224938_create_files_table.php
-    - database/migrations/2021_03_01_224939_create_points_table.php
     - database/migrations/2021_03_01_224940_create_inventaries_table.php
     - database/migrations/2021_03_01_224941_create_tickets_table.php
     - database/migrations/2021_03_01_224942_create_assets_table.php
@@ -131,8 +82,6 @@ updated:
     - database/migrations/2021_03_01_224953_create_userdatas_table.php
     - database/migrations/2021_03_01_224954_create_clients_table.php
     - database/migrations/2021_03_01_224955_create_scores_table.php
-    - database/migrations/2021_03_01_224956_create_municipalities_table.php
-    - database/migrations/2021_03_01_224957_create_departaments_table.php
     - database/migrations/2021_03_01_224958_create_categories_table.php
     - database/migrations/2021_03_05_163110_create_permissions_table.php
     - database/migrations/2021_03_01_224959_create_fiscal_tax_table.php
@@ -174,13 +123,13 @@ models:
     Address: { description_id: string, municipality_id: id, relationships: { hasMany: Contact } }
     File: { format: 'enum:image,doc,pdf,url', type: 'enum:transaccion,perfil,producto,rut,cedula,camara,ref_comercial,ref_personal,ref_bancaria,cer_libertad,balance,tarjeta_profesional,extecto,nit', route: string, comment: 'text nullable', modeltable_type: string, modeltable_id: unsignedBigInteger }
     Point: { company_id: id, type: 'enum:oficina,bodega,almacen,principal', comment: nullable, slug: string, relationships: { hasMany: 'Inventary, Ticket' } }
-    Inventary: { point_id: id, asset_id: id }
+    Inventary: { point_id: id, asset_id: id, units: 'default:1', max: 'integer nullable', min: 'integer default:1' }
     Ticket: { total: bigInteger, utc: bigInteger, point_id: id, creator_id: 'id foreign:users', vendor_id: 'id foreign:users', code: string, relationships: { hasMany: Extra } }
-    Asset: { name: string, slug: string, description: text, creator_id: 'id foreign:users', valoration: bigInteger, relationships: { hasMany: 'Inventary, Feature', belongsToMany: Category } }
+    Asset: { name: string, slug: string, description: text, creator_id: 'id foreign:users', valoration: bigInteger, relationships: { hasMany: Inventary, belongsToMany: Category } }
     Listsale: { feature_id: id, value: bigInteger, state: 'enum:activo,inactivo', utc_start: 'bigInteger nullable', utc_end: 'bigInteger nullable', relationships: { hasMany: Product } }
-    Feature: { reference: 'string nullable', weight: 'decimal:10,1 nullable', size: 'string nullable', width: 'integer nullable', height: 'integer nullable', texture: 'string nullable', units: 'default:1', max: 'integer nullable', min: 'integer default:1', asset_id: id, color_id: id, material_id: id, relationships: { hasMany: Listsale } }
+    Feature: { reference: 'string nullable', weight: 'decimal:10,1 nullable', size: 'string nullable', width: 'integer nullable', height: 'integer nullable', texture: 'string nullable', inventary_id: id, color_id: id, material_id: id, relationships: { hasMany: Listsale } }
     Product: { name: string, feature: text, units: integer, listsale_id: id }
-    Wallet: { code: 'string unique', modeltable_type: string, modeltable_id: unsignedBigInteger, wallettype_id: id, reference: bigInteger, relationships: { hasMany: Walletmoviment } }
+    Wallet: { code: 'string unique', modeltable_type: string, modeltable_id: unsignedBigInteger, wallettype_id: id, reference: 'bigInteger nullable', relationships: { hasMany: Walletmoviment } }
     Wallettype: { type: 'enum:efectivo,ahorros,daviplata,nequi,movi,ticket,credito', bank_id: 'id nullable', limit: 'bigInteger nullable', relationships: { hasMany: Wallet } }
     Walletmoviment: { value: bigInteger, interest: bigInteger, utc_start: 'bigInteger nullable', utc_end: 'bigInteger nullable', type: 'enum:inc,dec', state: 'enum:aprobado,desaprobado', wallet_id: id }
     Bank: { name: string, slug: string }

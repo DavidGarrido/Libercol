@@ -33,11 +33,6 @@ class Asset extends Model
         return $this->hasMany(\App\Models\Inventary::class);
     }
 
-    public function features()
-    {
-        return $this->hasMany(\App\Models\Feature::class);
-    }
-
     public function categories()
     {
         return $this->belongsToMany(\App\Models\Category::class);

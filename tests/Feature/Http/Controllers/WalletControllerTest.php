@@ -64,14 +64,12 @@ class WalletControllerTest extends TestCase
         $modeltable_type = $this->faker->word;
         $modeltable_id = $this->faker->randomNumber();
         $wallettype = Wallettype::factory()->create();
-        $reference = $this->faker->numberBetween(-100000, 100000);
 
         $response = $this->post(route('wallet.store'), [
             'code' => $code,
             'modeltable_type' => $modeltable_type,
             'modeltable_id' => $modeltable_id,
             'wallettype_id' => $wallettype->id,
-            'reference' => $reference,
         ]);
 
         $wallets = Wallet::query()
@@ -79,7 +77,6 @@ class WalletControllerTest extends TestCase
             ->where('modeltable_type', $modeltable_type)
             ->where('modeltable_id', $modeltable_id)
             ->where('wallettype_id', $wallettype->id)
-            ->where('reference', $reference)
             ->get();
         $this->assertCount(1, $wallets);
         $wallet = $wallets->first();
@@ -141,14 +138,12 @@ class WalletControllerTest extends TestCase
         $modeltable_type = $this->faker->word;
         $modeltable_id = $this->faker->randomNumber();
         $wallettype = Wallettype::factory()->create();
-        $reference = $this->faker->numberBetween(-100000, 100000);
 
         $response = $this->put(route('wallet.update', $wallet), [
             'code' => $code,
             'modeltable_type' => $modeltable_type,
             'modeltable_id' => $modeltable_id,
             'wallettype_id' => $wallettype->id,
-            'reference' => $reference,
         ]);
 
         $wallet->refresh();
@@ -160,7 +155,6 @@ class WalletControllerTest extends TestCase
         $this->assertEquals($modeltable_type, $wallet->modeltable_type);
         $this->assertEquals($modeltable_id, $wallet->modeltable_id);
         $this->assertEquals($wallettype->id, $wallet->wallettype_id);
-        $this->assertEquals($reference, $wallet->reference);
     }
 
 

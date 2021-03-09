@@ -4,9 +4,9 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Asset;
 use App\Models\Color;
 use App\Models\Feature;
+use App\Models\Inventary;
 use App\Models\Material;
 
 class FeatureFactory extends Factory
@@ -32,10 +32,7 @@ class FeatureFactory extends Factory
             'width' => $this->faker->numberBetween(-10000, 10000),
             'height' => $this->faker->numberBetween(-10000, 10000),
             'texture' => $this->faker->word,
-            'units' => $this->faker->word,
-            'max' => $this->faker->numberBetween(-10000, 10000),
-            'min' => $this->faker->numberBetween(-10000, 10000),
-            'asset_id' => Asset::factory(),
+            'inventary_id' => Inventary::factory(),
             'color_id' => Color::factory(),
             'material_id' => Material::factory(),
         ];

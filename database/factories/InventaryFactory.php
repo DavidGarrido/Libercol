@@ -27,6 +27,9 @@ class InventaryFactory extends Factory
         return [
             'point_id' => Point::factory(),
             'asset_id' => Asset::factory(),
+            'units' => $this->faker->word,
+            'max' => $this->faker->numberBetween(-10000, 10000),
+            'min' => $this->faker->numberBetween(-10000, 10000),
         ];
     }
 }

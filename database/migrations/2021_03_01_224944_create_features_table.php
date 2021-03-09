@@ -23,10 +23,7 @@ class CreateFeaturesTable extends Migration
             $table->integer('width')->nullable();
             $table->integer('height')->nullable();
             $table->string('texture')->nullable();
-            $table->string('units')->default('1');
-            $table->integer('max')->nullable();
-            $table->integer('min')->default('1');
-            $table->foreignId('asset_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('inventary_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('color_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('material_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

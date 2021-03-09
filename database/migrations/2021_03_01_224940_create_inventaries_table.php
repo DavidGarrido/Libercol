@@ -19,6 +19,9 @@ class CreateInventariesTable extends Migration
             $table->id();
             $table->foreignId('point_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('asset_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('units')->default('1');
+            $table->integer('max')->nullable();
+            $table->integer('min')->default('1');
             $table->timestamps();
         });
 
