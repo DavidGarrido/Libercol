@@ -18323,7 +18323,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     companie: Object,
-    role: Object
+    role: Object,
+    wallet: Object
   },
   methods: {
     destroy: function destroy() {
@@ -23804,7 +23805,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             onClick: _cache[1] || (_cache[1] = function () {
               return $options.destroy && $options.destroy.apply($options, arguments);
             })
-          }, "Eliminar")])])];
+          }, "Eliminar")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.wallet), 1
+          /* TEXT */
+          )])];
         }),
         _: 1
         /* STABLE */

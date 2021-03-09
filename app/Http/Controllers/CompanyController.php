@@ -6,6 +6,8 @@ use App\Http\Requests\CompanyStoreRequest;
 use App\Http\Requests\CompanyUpdateRequest;
 use App\Models\Company;
 use App\Models\Role;
+use App\Models\Wallet;
+use App\Models\Wallettype;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -61,6 +63,15 @@ class CompanyController extends Controller
             'slug' => strtolower(str_replace(' ', '-', str_replace('.', '', $slug_role))),
             'code' => $code
         ]);
+        $wallettype = Wallettype::create([
+            'type' => 'efectivo'
+        ]);
+        Wallet::create([
+            'code' => $code,
+            'modeltable_type' => 'App\Models\Company',
+            'modeltable_id' => $company->id,
+            'wallettype_id' => $wallettype->id
+        ]);
 
         $role->companies()->attach($company);
         $role->users()->attach(auth()->user()->id);
@@ -80,7 +91,8 @@ class CompanyController extends Controller
         // return view('company.show', compact('company'));
         return Inertia::render('company/show',[
             'companie' => $company,
-            'role' => $role
+            'role' => $role,
+            'wallet' => $company->wallet()->first()
         ]);
     }
 

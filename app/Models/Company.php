@@ -54,4 +54,8 @@ class Company extends Model
     {
         return $this->morphMany(Contact::class, 'modeltable');
     }
+    public function wallet()
+    {
+        return $this->morphMany(Wallet::class, 'modeltable');
+    }
 }

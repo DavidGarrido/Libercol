@@ -9,6 +9,7 @@
                     </inertia-link>
                     <button @click="destroy">Eliminar</button>
                 </div>
+                {{wallet}}
             </div>
         </panel>
     </app-layout>
@@ -25,7 +26,8 @@
         },
         props: {
             companie: Object,
-            role: Object
+            role: Object,
+            wallet: Object
         },
         methods: {
             destroy(){
