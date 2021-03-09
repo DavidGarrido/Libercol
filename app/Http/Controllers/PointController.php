@@ -32,7 +32,8 @@ class PointController extends Controller
             // si hay puntos imprime la lista
             return Inertia::render('point/index',[
                 'points' => $points,
-                'role' => $role
+                'role' => $role,
+                'companie' => $role->companies[0]
             ]);
         // }else{
             //si no hay puntos re-dirige a create
@@ -112,7 +113,8 @@ class PointController extends Controller
             'point' => $point,
             'role' => $role,
             'companie' => $role->companies()->first(),
-            'contact' => $point->contact()->with('address')->first()
+            'contact' => $point->contact()->with('address')->first(),
+            'companie' => $role->companies[0]
         ]);
     }
 
@@ -128,7 +130,8 @@ class PointController extends Controller
             'role' => $role,
             'contact' => $point->contact()->with('address')->first(),
             'departaments' => Departament::all(),
-            'municipal' => $point->contact[0]->address->municipality()->with('departament')->first()
+            'municipal' => $point->contact[0]->address->municipality()->with('departament')->first(),
+            'companie' => $role->companies[0]
         ]);
     }
 

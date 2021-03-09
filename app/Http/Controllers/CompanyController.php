@@ -8,7 +8,6 @@ use App\Models\Company;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
 use Illuminate\Support\Str;
 
