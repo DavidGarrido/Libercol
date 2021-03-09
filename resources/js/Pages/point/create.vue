@@ -6,9 +6,9 @@
                     <p>Tipo:</p>
                     <select v-model="form.type">
                         <option value="principal">Principal</option>
-                        <option value="bodega">Bodega</option>
-                        <option value="almacen">Almacen</option>
-                        <option value="oficina">Oficina</option>
+                        <option value="bodega" v-if="points.length > 0">Bodega</option>
+                        <option value="almacen" v-if="points.length > 0">Almacen</option>
+                        <option value="oficina" v-if="points.length > 0">Oficina</option>
                     </select>
                     <div class="flex justify-between w-1/2 gap-3">
                         <p class="w-2/12">Teléfono:</p>
@@ -115,6 +115,7 @@
         },
         mounted (){
             this.mun()
+            this.type()
         },
         methods: {
             store () {
@@ -129,6 +130,11 @@
                          }
                      )
                      .catch(err => console.error(err)) 
+            },
+            type () {
+                if (this.points.length == 0) {
+                    this.form.type = 'principal'
+                }
             }
         }
     }

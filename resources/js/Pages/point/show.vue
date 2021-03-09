@@ -60,6 +60,7 @@
                     <span v-if="contact.address.description_id == null" class="italic text-gray-400">Ninguno</span> 
                     <span v-else>{{contact.address.description_id}}</span> 
                 </p>
+                {{wallet}}
             </div>
         </panel>
     </app-layout>
@@ -78,7 +79,8 @@
             point: Object,
             role: Object,
             contact: Object,
-            companie: Object
+            companie: Object,
+            wallet: Object
         },
         methods :{
             destroy () {

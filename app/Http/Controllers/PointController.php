@@ -9,6 +9,8 @@ use App\Models\Contact;
 use App\Models\Departament;
 use App\Models\Point;
 use App\Models\Role;
+use App\Models\Wallet;
+use App\Models\Wallettype;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -28,17 +30,17 @@ class PointController extends Controller
         // return view('point.index', compact('points'));
 
         //comprobar si hay puntos relacionados a la empresa
-        // if ($rol->companies()->first()->points()->count()) {
+        if ($role->companies()->first()->points()->count()) {
             // si hay puntos imprime la lista
             return Inertia::render('point/index',[
                 'points' => $points,
                 'role' => $role,
                 'companie' => $role->companies[0]
             ]);
-        // }else{
+        }else{
             //si no hay puntos re-dirige a create
-            return redirect()->route('points.create',$role);
-        // }
+            return Redirect::route('points.create',$role)->with('success','Vas a crear tu primer punto.');
+        }
     }
 
     /**
@@ -94,6 +96,15 @@ class PointController extends Controller
             'modeltable_type' => 'App\Models\Point',
             'modeltable_id' => $point->id
         ]);
+        $wallettype = Wallettype::create([
+            'type' => 'efectivo'
+        ]);
+        Wallet::create([
+            'code' => $code,
+            'modeltable_type' => 'App\Models\Point',
+            'modeltable_id' => $point->id,
+            'wallettype_id' => $wallettype->id
+        ]);
 
         $role->points()->attach($point);
 
@@ -114,7 +125,8 @@ class PointController extends Controller
             'role' => $role,
             'companie' => $role->companies()->first(),
             'contact' => $point->contact()->with('address')->first(),
-            'companie' => $role->companies[0]
+            'companie' => $role->companies[0],
+            'wallet' => $point->wallet()->first()
         ]);
     }
 
@@ -131,7 +143,8 @@ class PointController extends Controller
             'contact' => $point->contact()->with('address')->first(),
             'departaments' => Departament::all(),
             'municipal' => $point->contact[0]->address->municipality()->with('departament')->first(),
-            'companie' => $role->companies[0]
+            'companie' => $role->companies[0],
+            'points' => $role->companies()->first()->points
         ]);
     }
 
