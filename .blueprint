@@ -1,8 +1,6 @@
 created:
-    - app/Http/Controllers/CompanyController.php
     - app/Http/Controllers/RoleController.php
     - app/Http/Controllers/PermissionController.php
-    - app/Http/Controllers/PointController.php
     - app/Http/Controllers/InventaryController.php
     - app/Http/Controllers/TicketController.php
     - app/Http/Controllers/AssetController.php
@@ -40,7 +38,6 @@ created:
     - database/factories/MunicipalityFactory.php
     - database/factories/DepartamentFactory.php
     - database/factories/CategoryFactory.php
-    - database/factories/RoleFactory.php
     - database/factories/PermissionFactory.php
     - app/Models/Company.php
     - app/Models/Industry.php
@@ -69,7 +66,6 @@ created:
     - app/Models/Municipality.php
     - app/Models/Departament.php
     - app/Models/Category.php
-    - app/Models/Role.php
     - app/Models/Permission.php
     - database/seeders/CompanySeeder.php
     - database/seeders/IndustrySeeder.php
@@ -95,15 +91,11 @@ created:
     - database/seeders/UserdataSeeder.php
     - database/seeders/ClientSeeder.php
     - database/seeders/ScoreSeeder.php
-    - database/seeders/MunicipalitySeeder.php
-    - database/seeders/DepartamentSeeder.php
     - database/seeders/CategorySeeder.php
     - database/seeders/RoleSeeder.php
     - database/seeders/PermissionSeeder.php
-    - tests/Feature/Http/Controllers/CompanyControllerTest.php
     - tests/Feature/Http/Controllers/RoleControllerTest.php
     - tests/Feature/Http/Controllers/PermissionControllerTest.php
-    - tests/Feature/Http/Controllers/PointControllerTest.php
     - tests/Feature/Http/Controllers/InventaryControllerTest.php
     - tests/Feature/Http/Controllers/TicketControllerTest.php
     - tests/Feature/Http/Controllers/AssetControllerTest.php
@@ -142,7 +134,6 @@ updated:
     - database/migrations/2021_03_01_224956_create_municipalities_table.php
     - database/migrations/2021_03_01_224957_create_departaments_table.php
     - database/migrations/2021_03_01_224958_create_categories_table.php
-    - database/migrations/2021_03_05_163109_create_roles_table.php
     - database/migrations/2021_03_05_163110_create_permissions_table.php
     - database/migrations/2021_03_01_224959_create_fiscal_tax_table.php
     - database/migrations/2021_03_01_225000_create_asset_category_table.php
@@ -189,7 +180,7 @@ models:
     Listsale: { feature_id: id, value: bigInteger, state: 'enum:activo,inactivo', utc_start: 'bigInteger nullable', utc_end: 'bigInteger nullable', relationships: { hasMany: Product } }
     Feature: { reference: 'string nullable', weight: 'decimal:10,1 nullable', size: 'string nullable', width: 'integer nullable', height: 'integer nullable', texture: 'string nullable', units: 'default:1', max: 'integer nullable', min: 'integer default:1', asset_id: id, color_id: id, material_id: id, relationships: { hasMany: Listsale } }
     Product: { name: string, feature: text, units: integer, listsale_id: id }
-    Wallet: { code: string, modeltable_type: string, modeltable_id: unsignedBigInteger, wallettype_id: id, relationships: { hasMany: Walletmoviment } }
+    Wallet: { code: 'string unique', modeltable_type: string, modeltable_id: unsignedBigInteger, wallettype_id: id, reference: bigInteger, relationships: { hasMany: Walletmoviment } }
     Wallettype: { type: 'enum:efectivo,ahorros,daviplata,nequi,movi,ticket,credito', bank_id: 'id nullable', limit: 'bigInteger nullable', relationships: { hasMany: Wallet } }
     Walletmoviment: { value: bigInteger, interest: bigInteger, utc_start: 'bigInteger nullable', utc_end: 'bigInteger nullable', type: 'enum:inc,dec', state: 'enum:aprobado,desaprobado', wallet_id: id }
     Bank: { name: string, slug: string }

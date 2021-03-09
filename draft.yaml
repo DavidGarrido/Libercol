@@ -128,10 +128,11 @@ models:
     type: enum:inc,dec
     ticket_id: id
   Wallet:
-    code: string
+    code: string unique
     modeltable_type: string
     modeltable_id: unsignedBigInteger
     wallettype_id: id
+    reference: bigInteger nullable
     relationships:
       hasMany: Walletmoviment
   Wallettype:
@@ -188,31 +189,33 @@ models:
   Departament:
     name: string
     code: integer
+    relationships:
+      hasMany: Municipality
   Category:
     name: string
     slug: string
     relationships:
       belongsToMany: Asset
-  Role:
-    name: string
-    slug: string
-    code: string unique
-    relationships:
-      belongsToMany: Permission
+  # Role:
+  #   name: string
+  #   slug: string
+  #   code: string unique
+  #   relationships:
+  #     belongsToMany: Permission
   Permission:
     name: string
     slug: string
     relationships:
       belongsToMany: Role
 controllers:
-  Company:
-    resource
+  # Company:
+  #   resource
   Role:
     resource
   Permission:
     resource
-  Point:
-    resource
+  # Point:
+  #   resource
   Inventary:
     resource
   Ticket:
@@ -233,4 +236,4 @@ controllers:
     resource
   Category:
     resource
-seeders: Company, Industry, Fiscal, Tax, Contact, Address, File, Point, Inventary, Ticket, Asset, Listsale, Feature, Color, Material, Product, Extra, Wallet, Wallettype, Walletmoviment, Bank, Userdata, Client, Score, Municipality, Departament, Category, Role, Permission
+seeders: Company, Industry, Fiscal, Tax, Contact, Address, File, Point, Inventary, Ticket, Asset, Listsale, Feature, Color, Material, Product, Extra, Wallet, Wallettype, Walletmoviment, Bank, Userdata, Client, Score, Category, Role, Permission

@@ -28,6 +28,7 @@ class WalletFactory extends Factory
             'modeltable_type' => $this->faker->word,
             'modeltable_id' => $this->faker->randomNumber(),
             'wallettype_id' => Wallettype::factory(),
+            'reference' => $this->faker->numberBetween(-100000, 100000),
         ];
     }
 }

@@ -25,6 +25,7 @@ class Wallet extends Model
         'id' => 'integer',
         'modeltable_id' => 'integer',
         'wallettype_id' => 'integer',
+        'reference' => 'integer',
     ];
 
 

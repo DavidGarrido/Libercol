@@ -17,10 +17,11 @@ class CreateWalletsTable extends Migration
 
         Schema::create('wallets', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
+            $table->string('code')->unique();
             $table->string('modeltable_type');
             $table->unsignedBigInteger('modeltable_id');
             $table->foreignId('wallettype_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->bigInteger('reference')->nullable();
             $table->timestamps();
         });
 
