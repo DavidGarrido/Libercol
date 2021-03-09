@@ -3,11 +3,20 @@
         <div class="p-3 flex gap-3 rounded-lg">
             <nav class="bg-white rounded-lg w-64 h-full p-5 shadow-lg flex flex-col">
                 <h1 class="text-3xl text-gray-500 pb-5">{{company.name}}</h1>
-                <inertia-link :class="isUrl('company') ? 'text-blue-500' : 'text-gray-400 group-hover:text-white'" class="py-2 font-bold" :href="route('companies.show',[role,company])">Inicio</inertia-link>
-                <inertia-link :class="isUrl('inventary') ? 'text-blue-500' : 'text-gray-400 group-hover:text-white'" class="py-2 font-bold" :href="route('inventaries.index',role)">Inventario</inertia-link>
-                <inertia-link :class="isUrl('point') ? 'text-blue-500' : 'text-gray-400 group-hover:text-white'" class="py-2 font-bold" :href="route('points.index',role)">Puntos</inertia-link>
+                <inertia-link :class="isUrl('company') ? 'text-blue-500' : 'text-gray-400 group-hover:text-white'" class="py-2 font-bold" :href="route('companies.show',[role,company])">
+                    <i class="fas fa-home"></i>
+                    Inicio
+                </inertia-link>
+                <inertia-link :class="isUrl('inventary') ? 'text-blue-500' : 'text-gray-400 group-hover:text-white'" class="py-2 font-bold" :href="route('inventaries.index',role)">
+                    <i class="fas fa-boxes"></i>
+                    Inventario
+                </inertia-link>
+                <inertia-link :class="isUrl('point') ? 'text-blue-500' : 'text-gray-400 group-hover:text-white'" class="py-2 font-bold" :href="route('points.index',role)">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Puntos
+                </inertia-link>
             </nav>
-            <div class="flex-1">
+            <div class="flex-1 text-gray-500">
                 <slot />
             </div>
         </div>
